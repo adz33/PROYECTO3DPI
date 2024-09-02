@@ -16,5 +16,27 @@
   color: #666;
 }
 
+body {
+  background-image: url('/src/assets/backgroundLogin.png');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-attachment: fixed;
+}
 
+button{
+  font-family: sans-serif;
+  padding: 15px 30px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #635d5aa3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+img{
+  padding: 20px 10px;
+  width: 250px;
+  height: 250px;
+}
 
