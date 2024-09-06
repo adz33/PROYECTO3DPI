@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background-image: url('/src/assets/backgroundLogin.png');
 }
 
 .welcome-text {
@@ -14,13 +15,6 @@
 .loading-text {
   font-size: medium;
   color: #666;
-}
-
-body {
-  background-image: url('/src/assets/backgroundLogin.png');
-  background-repeat: no-repeat;
-  background-size: auto;
-  background-attachment: fixed;
 }
 
 button{
