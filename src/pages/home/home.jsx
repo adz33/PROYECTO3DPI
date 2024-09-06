@@ -1,4 +1,4 @@
-import "./Home.css"
+import "./home.css"
 import { Suspense, useCallback } from "react";
 import { Canvas, useLoader, useFrame} from "@react-three/fiber";
 import { FirstPersonControls, FlyControls, OrbitControls } from "@react-three/drei";
