@@ -1,22 +1,28 @@
 import "./Home.css"
 import { Suspense, useCallback } from "react";
-import { Canvas, useLoader} from "@react-three/fiber";
+import { Canvas, useLoader, useFrame} from "@react-three/fiber";
 import { FirstPersonControls, FlyControls, OrbitControls } from "@react-three/drei";
 import { TextureLoader } from "three";
+import React,{ useRef } from "react";
 
 
-const StoneBox = () => {
-    const stoneTexture = useLoader
-    (TextureLoader,"./textures/stone.png")
+const AnimatedBox = () => {
+    const meshRef = useRef();
+
+    useFrame(({ clock }) => {
+        if (meshRef.current) {
+            meshRef.current.position.y = Math.cos(clock.getElapsedTime()) * 1; // Oscila en el eje y
+        }
+    });
 
     return (
-        <mesh>
+        <mesh ref={meshRef}>
             <boxGeometry args={[1, 1, 1]} />
-            {/* Aplicando la textura a la caja */}
-            <meshStandardMaterial map={stoneTexture} />
+            <meshStandardMaterial />
         </mesh>
     );
-}
+};
+
 
 const Home = () => {
 
@@ -24,12 +30,10 @@ const Home = () => {
         <div class='container-home'>
             <Canvas>
                 <directionalLight position={[5, 5, 5]} intensity={1} />
-                <mesh>
-                    <boxGeometry args={[1, 1, 1]} />
-                    <meshStandardMaterial/>
-        </mesh>
+                <ambientLight intensity={0.5} />
+                <AnimatedBox/>
+
                 <FirstPersonControls/>
-                <OrbitControls/>
             </Canvas>
         </div>
 
