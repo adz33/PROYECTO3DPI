@@ -28,7 +28,6 @@ const Home = () => {
 
     return (
         <div class='container-home'>
-        <div class='container-home'>
             <Canvas>
                 <directionalLight position={[5, 5, 5]} intensity={1} />
                 <ambientLight intensity={0.5} />
