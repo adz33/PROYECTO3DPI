@@ -4,21 +4,39 @@ import { Canvas, useLoader} from "@react-three/fiber";
 import { FirstPersonControls, FlyControls, OrbitControls } from "@react-three/drei";
 import { PerspectiveCamera } from "@react-three/drei";
 import { TextureLoader } from "three";
+import React,{ useRef } from "react";
 
-const CustomMaterial = (props) => {
-    return <meshBasicMaterial {...props} color="red" />;
+
+const AnimatedBox = () => {
+    const meshRef = useRef();
+
+    useFrame(({ clock }) => {
+        if (meshRef.current) {
+            meshRef.current.position.y = Math.cos(clock.getElapsedTime()) * 1; // Oscila en el eje y
+        }
+    });
+
+    return (
+        <mesh ref={meshRef}>
+            <boxGeometry args={[1, 1, 1]} />
+            <meshStandardMaterial />
+        </mesh>
+    );
 };
-
 
 const Home = () => {
 
     return (
-        <div class='container-home'>
+        
+        <div class='container-home' >
+            <button class='button-logout'>
+            Cerrar Sesión
+            </button>
             <Canvas>
-                <mesh>
-                    <boxGeometry args={[1,1,1]}/>
-                    <meshBasicMaterial color={"purple"}/>
-                </mesh>
+                <directionalLight position={[5, 5, 5]} intensity={1} />
+                <ambientLight intensity={0.5} />
+                <AnimatedBox/>
+
                 <FirstPersonControls/>
             </Canvas>
         </div>
