@@ -23,11 +23,14 @@ const AnimatedBox = () => {
     );
 };
 
-
 const Home = () => {
 
     return (
-        <div class='container-home'>
+        
+        <div class='container-home' >
+            <button class='button-logout'>
+            Cerrar Sesión
+            </button>
             <Canvas>
                 <directionalLight position={[5, 5, 5]} intensity={1} />
                 <ambientLight intensity={0.5} />
