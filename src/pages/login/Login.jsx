@@ -50,7 +50,7 @@ const Login = () => {
         </>
       ) : (
         <>
-          <img src="/src/assets/Logo.svg" alt="Logo"></img>
+          <img src="/src/assets/SVG/Logo.svg" className="img-login" alt="Logo"></img>
           <button onClick={handleLogin}>Iniciar sesión</button>
         </>
       )}
