@@ -23,8 +23,8 @@ const router = createBrowserRouter([
   },
   {
     path : "/Deforestation",
-    element: <Deforestation/>
-  }
+    element: <Deforestation/>,
+  },
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>

@@ -1,13 +1,9 @@
-import "./deforestation.css";
-import { Container, Nav, Navbar,Carousel} from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom"; // Importamos NavLink para la navegación interna
 
-
-const Deforestation = () => {
+const NavbarPage = () => {
     return (
-        <div>
-            <div className="deforestation-Navbar">
-                            <Navbar className="navbar" expand="lg">
+        <Navbar className="navbar" expand="lg">
             <Container>
                 <Navbar.Brand href="/home"> {/* Cambié a una ruta real */}
                     <img
@@ -36,37 +32,7 @@ const Deforestation = () => {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-            </div>
-            <div>
-                <Carousel >
-                    <Carousel.Item>
-                    <img
-                            className="d-block w-100"
-                            src="/src/assets/PNG/slide1-deforestation.png"
-                            />
-                        <Carousel.Caption>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src="/src/assets/PNG/slide2-deforestation.png"
-                            />
-                        <Carousel.Caption>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                </Carousel>
-            </div>
-            <div>
-                <img 
-                className="d-block w-100"
-                src="/src/assets/PNG/Recurso 14.png" 
-                alt="" />
-            </div>
-        </div>
-        
-        
     );
 };
 
-export default Deforestation;
+export default NavbarPage;
