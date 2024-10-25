@@ -63,6 +63,28 @@ const Deforestation = () => {
                 src="/src/assets/PNG/Recurso 14.png" 
                 alt="" />
             </div>
+            <div className="deforestation-combat">
+                <h2 className="h2-deforestation">
+                ¿Cómo combatir la deforestación?
+                </h2>
+                <ul>
+                    <li>
+                        Reforestación y restauración de bosques: Plantar árboles en áreas afectadas y restaurar ecosistemas.
+                    </li>
+                    <li>
+                        Uso sostenible de los recursos: Fomentar la gestión responsable de los bosques y la agricultura sostenible.
+                    </li>
+                    <li>
+                        Conservación y protección de áreas verdes: Creación de reservas naturales y leyes que protejan los bosques.
+                    </li>
+                    <li>
+                        Educación y concienciación: Informar a la sociedad sobre la importancia de los bosques y su conservación.
+                    </li>
+                    <li>
+                        Consumo responsable: Optar por productos certificados que no fomenten la deforestación, como madera certificada y productos libres de aceite de palma no sostenible
+                    </li>
+                </ul>
+            </div>
         </div>
         
         
