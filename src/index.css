@@ -20,3 +20,12 @@ body,
   margin: 0;
   padding: 0;
 }
+
+.navbar{
+  background-color: #17761B;
+  background-image: none;
+}
+
+.nav-link{
+  color: white !important;
+}

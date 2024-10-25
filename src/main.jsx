@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./pages/login/Login.jsx";
 import Quiz from "./pages/quiz/Quiz.jsx";
 import Home from "./pages/home/home.jsx";
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path : "/deforestation",
+    path : "/Deforestation",
     element: <Deforestation/>
   }
 ]);
