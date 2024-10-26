@@ -7,6 +7,7 @@ import Login from "./pages/login/Login.jsx";
 import Quiz from "./pages/quiz/Quiz.jsx";
 import Home from "./pages/home/home.jsx";
 import Deforestation from "./pages/deforestation/Deforestation.jsx"
+import SoilErosion from "./pages/soilErosion/soilErosion.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path : "/Deforestation",
     element: <Deforestation/>,
+  },
+  {
+    path: "/soilErosion",
+    element: <SoilErosion/>
   },
 ]);
 createRoot(document.getElementById("root")).render(
