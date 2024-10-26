@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./pages/login/Login.jsx";
 import Quiz from "./pages/quiz/Quiz.jsx";
 import Home from "./pages/home/home.jsx";
-import Deforestation from "./pages/deforestation/Deforestation.jsx"
+import Deforestation from "./pages/deforestation/Deforestation.jsx";
 import SoilErosion from "./pages/soilErosion/soilErosion.jsx";
 
 const router = createBrowserRouter([
