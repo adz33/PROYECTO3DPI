@@ -9,7 +9,6 @@ import Home from "./pages/home/home.jsx";
 import Deforestation from "./pages/deforestation/Deforestation.jsx";
 import SoilErosion from "./pages/soilErosion/soilErosion.jsx";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,7 +30,6 @@ const router = createBrowserRouter([
     path: "/soilErosion",
     element: <SoilErosion/>
   },
-
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>
