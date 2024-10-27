@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .navbar {
+    background-color: #2e7d32; /* Color verde */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .logo img {
+    width: 40px; /* Ajusta el tamaño del logo si es necesario */
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-links li {
+    margin-left: 20px;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  
