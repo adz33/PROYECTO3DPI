@@ -4,6 +4,8 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .slider-deforestation{
@@ -18,7 +20,5 @@
     padding: auto;
     
 }
-.deforestation-combat{
-    padding-top: 3%;
-    padding-bottom: 3%;
+
 
