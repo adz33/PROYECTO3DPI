@@ -7,7 +7,7 @@ const Deforestation = () => {
     return (
         <div>
             <div className="deforestation-Navbar">
-                            <Navbar className="navbar" expand="lg">
+            <Navbar className="navbar" expand="lg">
             <Container>
                 <Navbar.Brand href="/home"> {/* Cambié a una ruta real */}
                     <img

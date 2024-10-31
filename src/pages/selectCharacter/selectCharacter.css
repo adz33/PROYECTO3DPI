@@ -1,0 +1,33 @@
+.pNav-selectCharacter{
+    color: #2B2B2B;
+    align-items: center;
+    padding-left: 0%;
+    display: block;
+}
+.navbar-selectCharacter {
+    border:2px solid #ffffff;
+    border-radius: 8px;
+    background-color: #2B2B2B;
+}
+
+.selectCharacter-container{
+    display:flex; 
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.selectCharacter-div{
+    padding: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.h1-selectCharacter{
+    color: white;
+}
+
+.selectCharacter-content{
+    background-color: #2B2B2B;
+}
