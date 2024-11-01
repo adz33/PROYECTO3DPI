@@ -54,8 +54,8 @@ return (
                         </NavLink>
                     </Nav>
                     <Nav className="ms-auto">
-                        <NavLink to="/Login" className="nav-link"> {/* Redirige a la página de Login */}
-                            Cerrar Sesión
+                        <NavLink to="/home" className="nav-link"> {/* Redirige a la página de Login */}
+                            Home
                         </NavLink>
                     </Nav>
                 </Navbar.Collapse>
