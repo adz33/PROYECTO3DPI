@@ -10,6 +10,7 @@ import SoilErosion from "./pages/soilErosion/soilErosion.jsx";
 import SelectCharacter from "./pages/selectCharacter/selectCharacter.jsx";
 
 const router = createBrowserRouter([
+  
   {
     path: "/",
     element: <Login />,
