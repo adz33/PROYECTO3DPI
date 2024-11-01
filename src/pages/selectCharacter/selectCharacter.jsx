@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 
 function Model({ path }) {
 const { scene } = useGLTF(path);
-return <primitive object={scene} scale={0.5} />;
+return <primitive object={scene} scale={0.18} />;
 }
 
 const SelectCharacter = ({ onCharacterSelect }) => {
@@ -18,7 +18,16 @@ const handleCharacterClick = (character) =>
     {
     setSelectedCharacter(character);
     onCharacterSelect(character); // Llamada a función para pasar la selección
-    };
+    }; 
+
+const enginnerCharacter = () => {
+    const meshRef = useRef();
+}
+
+    const cientificCharacter = () => {
+        const meshRef = useRef();
+    
+    }
 
 return (
     <div className="selectCharacter-content">
@@ -60,26 +69,26 @@ return (
                     Selecciona tu Personaje
                 </h1>
             </div>
-                <Canvas camera={{
-                    fov: 30,
-                    position: [0.5,1,0],
-                }}>
-                
-                    <OrbitControls enableZoom={true} />
-                    <ambientLight intensity={0.5} />
-                    <directionalLight position={[2, 2, 2]} />
-                    <Model path="/characters/Avatars/Cientific.glb" />
-                </Canvas>
-                <p>Científico</p>
-                <Canvas style={{ width: 200, height: 200 }}>
-                    <OrbitControls enableZoom={true} />
-                    <ambientLight intensity={0.5} />
-                    <directionalLight position={[2, 2, 2]} />
-                    <Model path="/characters/Avatars/maleCharacter.glb" />
-                </Canvas>
-                <p>Personaje Masculino</p>
-        </div>
+            <div className="character-selection">
+                <div className="character-container">
+                    <Canvas camera={{ fov: 49, position: [0.5, 0.25, 0.5] }}>
+                        <OrbitControls enableZoom={false} />
+                        <ambientLight intensity={0.5} />
+                        <directionalLight position={[2, 2, 2]} />
+                        <Model path="/characters/Avatars/Cientific.glb" />
+                    </Canvas>
+                    <p className="p-character-container">Científico</p>
+                    <Canvas camera={{ fov: 49, position: [0.5, 0.25, 0.5] }}>
+                        <OrbitControls enableZoom={false} />
+                        <ambientLight intensity={0.5} />
+                        <directionalLight position={[2, 2, 2]} />
+                        <Model path="/characters/Avatars/maleCharacter.glb" />
+                    </Canvas>
+                    <p className="p-character-container">Personaje Masculino</p>
+                </div>
 
+        </div>
+        </div>
     </div>
 
 );
