@@ -4,4 +4,21 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    padding-left: 5%;
+    padding-right: 5%;
 }
+
+.slider-deforestation{
+    background-color: blue;
+    padding-top: 0%;
+}
+
+.h2-deforestation{
+    text-align: center;
+    background-color: #17761B;
+    color: white;
+    padding: auto;
+    
+}
+
+
