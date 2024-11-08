@@ -1,10 +1,10 @@
 .container-home{
-    background-color: #045500;
     height: 100vh;
+    background-color: #FBF6F0;
 }
 .row{
-    color: white;
-    background-color: #045500;
+    color: rgb(0, 0, 0);
+    background-image: url('/images/home/background-leaves.jpg');
     display: grid;
     grid-template-columns: 48% 48%;
     padding-top: 4%;
@@ -26,5 +26,7 @@
     background-color: #045500 !important;
     text-align: center;
     align-items: center;
-
+    justify-content: center;
+    height: 100vh;
+    background-color: #945f5fc4;
 }
