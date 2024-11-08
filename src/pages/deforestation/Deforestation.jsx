@@ -42,7 +42,7 @@ const Deforestation = () => {
                     <Carousel.Item>
                     <img
                             className="d-block w-100"
-                            src="/public/images/deforestation/slides/slide1.jpg"
+                            src="/images/deforestation/slides/slide1.jpg"
                             />
                         <Carousel.Caption>
                         </Carousel.Caption>
@@ -50,7 +50,7 @@ const Deforestation = () => {
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="/public/images/deforestation/slides/slide2.jpg"
+                            src="/images/deforestation/slides/slide2.jpg"
                             />
                         <Carousel.Caption>
                         </Carousel.Caption>

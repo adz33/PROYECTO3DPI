@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function Model(props) {
-  const { nodes, materials } = useGLTF('/untitled.glb')
+  const { nodes, materials } = useGLTF('/mapLvL0.glb')
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -253,13 +253,6 @@ export function Model(props) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Ground003.geometry}
-        material={materials['Mat_tree.001']}
-        position={[-11.077, 0.195, 22.875]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
         geometry={nodes.Ground004.geometry}
         material={materials['Mat_tree.001']}
         position={[-11.077, 0.195, 10.615]}
@@ -376,20 +369,6 @@ export function Model(props) {
         geometry={nodes.Ground013.geometry}
         material={materials['Mat_tree.009']}
         position={[-24.535, 0.195, -24.905]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Ground014.geometry}
-        material={materials['Mat_tree.010']}
-        position={[-23.351, 0.417, 7.477]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Ground015.geometry}
-        material={materials['Mat_tree.011']}
-        position={[-23.351, 0.417, 12.119]}
       />
       <mesh
         castShadow
@@ -751,4 +730,4 @@ export function Model(props) {
   )
 }
 
-useGLTF.preload('/untitled.glb')
+useGLTF.preload('/mapLvL0.glb')
