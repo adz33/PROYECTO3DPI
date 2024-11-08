@@ -42,7 +42,7 @@ const Deforestation = () => {
                     <Carousel.Item>
                     <img
                             className="d-block w-100"
-                            src="/src/pages/deforestation/images/jpg/slide1.jpg"
+                            src="/public/images/deforestation/slides/slide1.jpg"
                             />
                         <Carousel.Caption>
                         </Carousel.Caption>
@@ -50,7 +50,7 @@ const Deforestation = () => {
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="/src/pages/deforestation/images/jpg/slide2.jpg"
+                            src="/public/images/deforestation/slides/slide2.jpg"
                             />
                         <Carousel.Caption>
                         </Carousel.Caption>
@@ -58,16 +58,15 @@ const Deforestation = () => {
                 </Carousel>
             </div>
             <div className="deforestation-combat">
-                <img src="/src/pages/deforestation/images/svg/queEsDeforestacion.svg" alt="" />
+                <img src="/public/images/deforestation/mainpage/queEsDeforestacion.svg" alt="que es deforestación" />
             </div>
             <div>
                 <img 
                 className="d-block w-100"
-                src="/src/pages/deforestation/images/svg/CausasConsecuencias.svg" 
-                alt="" />
+                src="/public/images/deforestation/mainpage/CausasConsecuencias.svg" alt="Causas y Consecuencias" />
             </div>
             <div className="deforestation-combat">
-                <img src="/src/pages/deforestation/images/svg/combatirDeforestacion.svg" alt="" />
+                <img src="/public/images/deforestation/mainpage/combatirDeforestacion.svg" alt="Combatir la deforestación" />
             </div>
         </div>
         
