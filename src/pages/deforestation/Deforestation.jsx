@@ -7,7 +7,7 @@ const Deforestation = () => {
     return (
         <div>
             <div className="deforestation-Navbar">
-                            <Navbar className="navbar" expand="lg">
+            <Navbar className="navbar" expand="lg">
             <Container>
                 <Navbar.Brand href="/home"> {/* Cambié a una ruta real */}
                     <img
@@ -21,10 +21,10 @@ const Deforestation = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <NavLink to="/Home" className="nav-link"> {/* Usamos to en lugar de href */}
+                        <NavLink to="/soilErosion" className="nav-link"> {/* Usamos to en lugar de href */}
                             Erosión del Suelo
                         </NavLink>
-                        <NavLink to="/Quiz" className="nav-link"> {/* Redirige a la página del Quiz */}
+                        <NavLink to="/selectCharacter" className="nav-link"> {/* Redirige a la página del Quiz */}
                             Volver al Juego
                         </NavLink>
                     </Nav>

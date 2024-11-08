@@ -1,29 +1,11 @@
-import "./SoilErosionPage.css";
+import "./soilErosion.css";
 import { Container, Nav, Navbar, Carousel } from "react-bootstrap";
 import { NavLink } from "react-router-dom"; // Importamos NavLink para la navegación interna
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import { useGLTF } from "@react-three/drei";
-import { useState } from "react";
 
-
-function Model({ path }) {
-  const { scene } = useGLTF(path);
-  return <primitive object={scene} scale={0.5} />;
-}
-
-const SoilErosionPage = () => {
-  // Estado para controlar la visibilidad del modelo 3D
-  const [isModelVisible, setIsModelVisible] = useState(false);
-
-  // Función para manejar el clic en la imagen
-  const handleImage = () => {
-    setIsModelVisible(true); // Cambia el estado para mostrar el modelo 3D
-  };
-
+const SoilErosion = () => {
   return (
     <div>
-      <div className="SoilErosionPage-Navbar">
+      <div className="deforestation-Navbar">
         <Navbar className="navbar" expand="lg">
           <Container>
             <Navbar.Brand href="/home">
@@ -40,10 +22,10 @@ const SoilErosionPage = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
-                <NavLink to="/Home" className="nav-link">
+                <NavLink to="/Deforestation" className="nav-link">
                   {" "}
                   {/* Usamos to en lugar de href */}
-                  Erosión del Suelo
+                  Deforestación
                 </NavLink>
                 <NavLink to="/Quiz" className="nav-link">
                   {" "}
@@ -67,37 +49,27 @@ const SoilErosionPage = () => {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="src/pages/soilErosion/images/jpg/erosionSuelo.jpg"
+              src="src/pages/deforestation/images/jpg/slide1.jpg"
             />
             <Carousel.Caption></Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="src/pages/soilErosion/images/jpg/DegradacionSuelo.jpg"
-              // Maneja el clic en esta imagen
-              alt="Erosión del Suelo"
-            />
+            <img className="d-block w-100" src="src/pages/deforestation/images/jpg/Frame 11.jpg" />
             <Carousel.Caption></Carousel.Caption>
           </Carousel.Item>
         </Carousel>
-
+      </div>
+      <div>
         <img
           className="d-block w-100"
-          src="src/pages/soilErosion/images/jpg/CausasConsecuencias.jpg"
-          onClick={handleImage}
+          src="src/assets/PNG/Recurso 18.png "
           alt=""
         />
       </div>
-
-      <Canvas>
-        <OrbitControls enableZoom={false} />
-        <Model path="models-3D/branches-medium.glb" />
-      </Canvas>
-
-      <div className="SoilErosionPage-combat">
+      <div>
         <img
-          src="/src/pages/deforestation/images/svg/combatirDeforestacion.svg"
+          className="d-block w-100"
+          src="src/assets/PNG/Frame 9.png"
           alt=""
         />
       </div>
@@ -105,4 +77,4 @@ const SoilErosionPage = () => {
   );
 };
 
-export default SoilErosionPage;
+export default SoilErosion;
