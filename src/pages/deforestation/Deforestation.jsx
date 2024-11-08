@@ -12,7 +12,7 @@ const Deforestation = () => {
                 <Navbar.Brand href="/home"> {/* Cambié a una ruta real */}
                     <img
                         alt=""
-                        src="/src/assets/SVG/Recurso 9.svg"
+                        src="/images/Logo.svg"
                         width="40"
                         height="40"
                         className="d-inline-block align-top"
@@ -58,15 +58,15 @@ const Deforestation = () => {
                 </Carousel>
             </div>
             <div className="deforestation-combat">
-                <img src="/public/images/deforestation/mainpage/queEsDeforestacion.svg" alt="que es deforestación" />
+                <img src="images/deforestation/mainpage/queEsDeforestacion.svg" alt="que es deforestación" />
             </div>
             <div>
                 <img 
                 className="d-block w-100"
-                src="/public/images/deforestation/mainpage/CausasConsecuencias.svg" alt="Causas y Consecuencias" />
+                src="images/deforestation/mainpage/CausasConsecuencias.svg" alt="Causas y Consecuencias" />
             </div>
             <div className="deforestation-combat">
-                <img src="/public/images/deforestation/mainpage/combatirDeforestacion.svg" alt="Combatir la deforestación" />
+                <img src="images/deforestation/mainpage/combatirDeforestacion.svg" alt="Combatir la deforestación" />
             </div>
         </div>
         
