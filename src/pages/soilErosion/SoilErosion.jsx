@@ -62,7 +62,7 @@ const SoilErosion = () => {
       <div>
         <img
           className="d-block w-100"
-          src="src/assets/PNG/Recurso 18.png "
+          src="src/assets/PNG/Recurso 18.png"
           alt=""
         />
       </div>
