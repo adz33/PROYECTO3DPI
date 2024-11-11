@@ -54,7 +54,10 @@ const SoilErosion = () => {
             <Carousel.Caption></Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            <img className="d-block w-100" src="src/pages/deforestation/images/jpg/Frame 11.jpg" />
+            <img
+              className="d-block w-100"
+              src="src/pages/deforestation/images/jpg/Frame 11.jpg"
+            />
             <Carousel.Caption></Carousel.Caption>
           </Carousel.Item>
         </Carousel>
