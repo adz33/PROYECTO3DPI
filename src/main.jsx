@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path : "/Deforestation",
+    path : "/deforestation",
     element: <Deforestation/>,
   },
   {
