@@ -4,7 +4,7 @@ import { Color } from "three";
 const Lights = () => {
     return (
         <>
-        <directionalLight></directionalLight>
+        <directionalLight position={[-10,10,0]} intensity={3}/>
         </>
     );
 };
