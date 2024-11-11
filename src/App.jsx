@@ -1,11 +1,26 @@
-import './App.css'
-import Login from './pages/login/Login'
+import "./App.css";
+import Login from "./pages/login/Login";
+import Navbar from "./components/Navbar";
 
 function App() {
-
   return (
-    <Login />
-  )
+    <div className="App">
+      <Navbar /> {/* Usa el componente */}
+      <main>
+        <h1>Bienvenido a mi proyecto</h1>
+        {/* Otros componentes o contenido */}
+      </main>
+    </div>
+  );
 }
 
-export default App
+// export default App;
+
+// function App() {
+
+//   return (
+//     <Login />
+//   )
+// }
+
+// export default App

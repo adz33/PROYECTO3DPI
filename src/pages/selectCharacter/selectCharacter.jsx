@@ -14,8 +14,9 @@ return <primitive object={scene} scale={0.18} />;
 }
 
 //Este componente se utiliza para la selección del personaje, aun no se encuentra activo
-const SelectCharacter = ({ onCharacterSelect }) => {
-const [selectedCharacter, setSelectedCharacter] = useState(null);
+const SelectCharacter = () => {
+
+    const [selectedCharacter, setSelectedCharacter] = useState(null);
 
 const handleCharacterClick = (character) => 
     {
@@ -33,8 +34,8 @@ return (
                     <Navbar.Brand href="/home"> {/* marca para redireccionamiento a la pagina principal */}
                         {/* Logo de la empresa */}
                         <img
-                            alt=""
-                            src="/src/assets/SVG/Recurso 9.svg"
+                            alt="Logo"
+                            src="/images/Logo.svg"
                             width="40"
                             height="40"
                             className="d-inline-block align-top"
@@ -70,7 +71,7 @@ return (
             </div>
             <div className="character-selection">
                 <div className="character-container">
-                    <div className="canvas-container">
+                    <div className="canvas-container" onClick={() => handleCharacterClick('Científico')}>
                         <Canvas camera={{ fov: 49, position: [0.5, 0.25, 0.5] }}>
                             <OrbitControls enableZoom={false} />
                             <ambientLight intensity={0.5} />
@@ -78,7 +79,7 @@ return (
                             <Model path="/characters/Avatars/Cientific.glb" />
                         </Canvas>
                     </div>
-                    <div className="canvas-container">
+                    <div className="canvas-container" onClick={() => handleCharacterClick('Ingeniero')}>
                         <Canvas camera={{ fov: 49, position: [0.5, 0.25, 0.5] }}>
                             <OrbitControls enableZoom={false} />
                             <ambientLight intensity={0.5} />

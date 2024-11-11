@@ -11,7 +11,7 @@ const Deforestation = () => {
             <Container>
                 <Navbar.Brand href="/home"> {/* Cambié a una ruta real */}
                     <img
-                        alt=""
+                        alt="Logo"
                         src="/images/Logo.svg"
                         width="40"
                         height="40"
