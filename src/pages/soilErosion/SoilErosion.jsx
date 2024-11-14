@@ -1,6 +1,7 @@
 import "./soilErosion.css";
 import { Container, Nav, Navbar, Carousel } from "react-bootstrap";
 import { NavLink } from "react-router-dom"; // Importamos NavLink para la navegación interna
+import EarthPage from "../../components/ErarthPage/EarthPage";
 
 const SoilErosion = () => {
   return (
@@ -49,14 +50,14 @@ const SoilErosion = () => {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="src/pages/deforestation/images/jpg/slide1.jpg"
+              src="images/soilErosion/slides/slide-1.jpg"
             />
             <Carousel.Caption></Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="src/pages/deforestation/images/jpg/Frame 11.jpg"
+              src="images/soilErosion/PNG/Frame 22.png"
             />
             <Carousel.Caption></Carousel.Caption>
           </Carousel.Item>
@@ -65,16 +66,15 @@ const SoilErosion = () => {
       <div>
         <img
           className="d-block w-100"
-          src="src/assets/PNG/Recurso 18.png "
+          src="images/soilErosion/PNG/Recurso 18.png"
           alt=""
         />
       </div>
       <div>
-        <img
-          className="d-block w-100"
-          src="src/assets/PNG/Frame 9.png"
-          alt=""
-        />
+        <img className="d-block w-100" 
+        src="images/soilErosion/PNG/Frame 20.png" 
+        alt="" />
+        <EarthPage />
       </div>
     </div>
   );

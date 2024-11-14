@@ -14,13 +14,12 @@ function App() {
   );
 }
 
-// export default App;
 
-// function App() {
+function App() {
 
-//   return (
-//     <Login />
-//   )
-// }
+  return (
+    <Login />
+  )
+}
 
-// export default App
+export default App;
