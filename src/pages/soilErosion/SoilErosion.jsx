@@ -71,10 +71,15 @@ const SoilErosion = () => {
         />
       </div>
       <div>
-        <img className="d-block w-100" 
-        src="images/soilErosion/PNG/Frame 20.png" 
-        alt="" />
+        <img className="d-block w-100" src="" alt="" />
         <EarthPage />
+      </div>
+      <div>
+        <img
+          className="d-block w-100"
+          src="images/soilErosion/PNG/Frame 26.png"
+          alt=""
+        />
       </div>
     </div>
   );
