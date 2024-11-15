@@ -25,7 +25,7 @@ const Deforestation = () => {
                             Erosión del Suelo
                         </NavLink>
                         <NavLink to="/selectCharacter" className="nav-link"> {/* Redirige a la página del Quiz */}
-                            Volver al Juego
+                            Experiencia Interactiva
                         </NavLink>
                     </Nav>
                     <Nav className="ms-auto">
@@ -69,8 +69,6 @@ const Deforestation = () => {
                 <img src="images/deforestation/mainpage/combatirDeforestacion.svg" alt="Combatir la deforestación" />
             </div>
         </div>
-        
-        
     );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { OrbitControls, Html} from '@react-three/drei';
+import {KeyboardControls, OrbitControls, Html} from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import InitialMap from "./world/initialMap.jsx";
 import Lights from './Lights/Lighs.jsx';

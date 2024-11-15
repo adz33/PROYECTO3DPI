@@ -25,8 +25,8 @@ const Home = () => {
                 <Container>
                     <Navbar.Brand href="/home"> {/* Cambié a una ruta real */}
                         <img
-                            alt=""
-                            src="/src/assets/SVG/Recurso 9.svg"
+                            alt="Logo"
+                            src="/images/Logo.svg"
                             width="40"
                             height="40"
                             className="d-inline-block align-top"
@@ -35,8 +35,8 @@ const Home = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ms-auto">
-                                <NavLink to="/" className="nav-link"> {/* Usamos to en lugar de href para redireccinar, redirige a la pagina erosión del suelo */}
-                                    Iniciar Sesión
+                                <NavLink to="/Login" className="nav-link"> {/* Usamos to en lugar de href para redireccinar, redirige a la pagina erosión del suelo */}
+                                    Experiencia Interactiva
                                 </NavLink>
                                 <NavLink to="/soilErosion" className="nav-link"> {/* Usamos to en lugar de href para redireccinar, redirige a la pagina erosión del suelo */}
                                     Erosión del Suelo

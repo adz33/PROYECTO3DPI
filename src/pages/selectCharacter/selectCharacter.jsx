@@ -6,6 +6,8 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF, Html } from '@react-three/drei';
 import { Container, Nav, Navbar,} from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import Cientific from "./Characters/Cientific";
+import maleCharacter from "./Characters/maleCharacter";
 
 //Se crea una función para cargar y rendereizar modelos a una escala determinada
 function Model({ path }) {
@@ -95,6 +97,10 @@ return (
                     </h2>
                 </div>
             </div>
+            <div className="selection-container">
+                    <h2 className="h2-selectCharacter">Personaje seleccionado: </h2>
+                    <button className="button-characterSelection">Confirmar</button>
+                </div>
         </div>
     </div>
 );
