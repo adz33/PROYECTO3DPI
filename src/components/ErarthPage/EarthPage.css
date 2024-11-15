@@ -1,0 +1,9 @@
+
+  .earth-container{
+    width: 100vw;
+    height: 100vw;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
