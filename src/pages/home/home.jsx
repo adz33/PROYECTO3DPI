@@ -59,7 +59,7 @@ const Home = () => {
                     <Carousel.Item>
                     <img
                             className="d-block w-100"
-                            src="/src/pages/home/slides/slide.jpg"
+                            src="/images/home/slides/slide.jpg"
                             />
                         <Carousel.Caption>
                         </Carousel.Caption>
@@ -67,7 +67,7 @@ const Home = () => {
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="/src/pages/home/slides/slide-1.jpg"
+                            src="/images/home/slides/slide-1.jpg"
                             />
                         <Carousel.Caption>
                         </Carousel.Caption>
