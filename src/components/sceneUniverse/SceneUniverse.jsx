@@ -16,6 +16,7 @@ const SceneUniverse = ({
   if (!environmentPath) {
     console.error('Hace falta la ruta de la scena');
     return null;
+    //hello
   }
 
   const environmentFiles = ['cube_right.png', 'cube_left.png', 'cube_up.png', 'cube_down.png',  'cube_back.png', 'cube_front.png'];
