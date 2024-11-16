@@ -22,7 +22,7 @@ const PlanetEarth = (props) => {
 
   return (
     <RotationPlanet speed={0.01}> {/* Envuelve el planeta con el componente de rotación */}
-       <group {...props} dispose={null}>
+      <group {...props} dispose={null}>
       <group name="Scene">
         <group name="Node0" position={[0, 0, 15.707]}>
           <mesh

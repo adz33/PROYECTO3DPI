@@ -9,7 +9,7 @@ const Deforestation = () => {
             <div className="deforestation-Navbar">
             <Navbar className="navbar" expand="lg">
             <Container>
-                <Navbar.Brand href="/home"> {/* Cambié a una ruta real */}
+                <Navbar.Brand href="/"> {/* Cambié a una ruta real */}
                     <img
                         alt="Logo"
                         src="/images/Logo.svg"
