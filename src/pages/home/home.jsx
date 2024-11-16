@@ -39,7 +39,7 @@ const Home = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ms-auto">
-                                <NavLink to="/Login" className="nav-link"> {/* Usamos to en lugar de href para redireccinar, redirige a la pagina erosión del suelo */}
+                                <NavLink to="/selectCharacter" className="nav-link"> {/* Usamos to en lugar de href para redireccinar, redirige a la pagina erosión del suelo */}
                                     Experiencia Interactiva
                                 </NavLink>
                                 <NavLink to="/soilErosion" className="nav-link"> {/* Usamos to en lugar de href para redireccinar, redirige a la pagina erosión del suelo */}
