@@ -6,8 +6,10 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF, Html } from '@react-three/drei';
 import { Container, Nav, Navbar,} from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Cientific from "./Characters/Cientific";
 import maleCharacter from "./Characters/maleCharacter";
+
 
 //Se crea una función para cargar y rendereizar modelos a una escala determinada
 function Model({ path }) {
@@ -20,11 +22,19 @@ const SelectCharacter = () => {
 
     const [selectedCharacter, setSelectedCharacter] = useState(null);
 
+const navigate = useNavigate();
+
 const handleCharacterClick = (character) => 
     {
     setSelectedCharacter(character);
-    onCharacterSelect(character); // Llamada a función para pasar la selección
+    // Removed onCharacterSelect(character) as it is not defined
     }; 
+
+const handleConfirmClick = () => {
+    navigate("/level0");
+}
+
+
 
 return (
     //Clase contenedor de la pagina para seleccionar personaje
@@ -57,7 +67,7 @@ return (
                             </NavLink>
                         </Nav>
                         <Nav className="ms-auto">
-                            <NavLink to="/home" className="nav-link"> {/* Redirige a la página de Login */}
+                            <NavLink to="/" className="nav-link"> {/* Redirige a la página de Login */}
                                 Home
                             </NavLink>
                         </Nav>
@@ -98,9 +108,9 @@ return (
                 </div>
             </div>
             <div className="selection-container">
-                    <h2 className="h2-selectCharacter">Personaje seleccionado: </h2>
-                    <button className="button-characterSelection">Confirmar</button>
-                </div>
+                    <h2 className="h2-selectCharacter">Personaje seleccionado: {selectedCharacter}</h2>
+                    <button className="button-characterSelection" onClick={handleConfirmClick}> Confirmar</button>
+            </div>
         </div>
     </div>
 );

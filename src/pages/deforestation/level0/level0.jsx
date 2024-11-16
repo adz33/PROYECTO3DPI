@@ -6,6 +6,11 @@ import Lights from './Lights/Lighs.jsx';
 import Cientific from './Characters/Cientific.jsx';
 import MaleCharacter from "./Characters/maleCharacter.jsx";
 
+
+const characterselectect = (props) => {
+
+};
+
 const Level0 = () => 
     {
         const [selectedCharacter, setSelectedCharacter] = useState(null);
