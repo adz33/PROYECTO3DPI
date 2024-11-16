@@ -3,12 +3,13 @@ import "./selectCharacter.css" //Se importa el archivo CSS para el estilo de la 
 //Se importan las bibliotecas necesarias de react y terceros
 import React, { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Html } from '@react-three/drei';
+import { OrbitControls, useGLTF, Html, Sky, Cloud, Clouds } from '@react-three/drei';
 import { Container, Nav, Navbar,} from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Cientific from "./Characters/Cientific";
 import maleCharacter from "./Characters/maleCharacter";
+import Environment from "./Environment/Environment";
 
 
 //Se crea una función para cargar y rendereizar modelos a una escala determinada
@@ -28,10 +29,11 @@ const handleCharacterClick = (character) =>
     {
     setSelectedCharacter(character);
     // Removed onCharacterSelect(character) as it is not defined
+    return character;
     }; 
 
 const handleConfirmClick = () => {
-    navigate("/level0");
+    navigate("/level0", { state: { selectedCharacter } });
 }
 
 
@@ -43,7 +45,7 @@ return (
             <Navbar className="navbar-selectCharacter" expand="lg">
                 <Container>
                     {/* Barra de navegación */}
-                    <Navbar.Brand href="/home"> {/* marca para redireccionamiento a la pagina principal */}
+                    <Navbar.Brand href="/"> {/* marca para redireccionamiento a la pagina principal */}
                         {/* Logo de la empresa */}
                         <img
                             alt="Logo"
@@ -85,6 +87,7 @@ return (
                 <div className="character-container">
                     <div className="canvas-container" onClick={() => handleCharacterClick('Científico')}>
                         <Canvas camera={{ fov: 49, position: [0.5, 0.25, 0.5] }}>
+                            <Sky sunPosition={[100, 10, 100]} />
                             <OrbitControls enableZoom={false} />
                             <ambientLight intensity={0.5} />
                             <directionalLight position={[2, 2, 2]} />
@@ -93,6 +96,7 @@ return (
                     </div>
                     <div className="canvas-container" onClick={() => handleCharacterClick('Ingeniero')}>
                         <Canvas camera={{ fov: 49, position: [0.5, 0.25, 0.5] }}>
+                            <Sky sunPosition={[100, 10, 100]} />
                             <OrbitControls enableZoom={false} />
                             <ambientLight intensity={0.5} />
                             <directionalLight position={[2, 2, 2]} />
