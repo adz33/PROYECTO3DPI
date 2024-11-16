@@ -24,8 +24,8 @@ const Deforestation = () => {
                         <NavLink to="/soilErosion" className="nav-link"> {/* Usamos to en lugar de href */}
                             Erosión del Suelo
                         </NavLink>
-                        <NavLink to="/selectCharacter" className="nav-link"> {/* Redirige a la página del Quiz */}
-                            Volver al Juego
+                        <NavLink to="/Login" className="nav-link"> {/* Redirige a la página del Quiz */}
+                            Experiencia Interactiva
                         </NavLink>
                     </Nav>
                     <Nav className="ms-auto">

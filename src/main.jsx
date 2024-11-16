@@ -13,11 +13,11 @@ import Level0 from "./pages/deforestation/level0/level0.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />,
+    element: <Home />,
   },
   {
-    path: "/Home",
-    element: <Home />,
+    path: "/Login",
+    element: <Login />,
   },
   {
     path : "/Deforestation",
