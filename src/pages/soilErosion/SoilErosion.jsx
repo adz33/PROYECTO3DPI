@@ -14,7 +14,7 @@ const SoilErosion = () => {
               {/* Cambié a una ruta real */}
               <img
                 alt=""
-                src="/src/assets/SVG/Recurso 9.svg"
+                src="/images/Logo.svg"
                 width="40"
                 height="40"
                 className="d-inline-block align-top"

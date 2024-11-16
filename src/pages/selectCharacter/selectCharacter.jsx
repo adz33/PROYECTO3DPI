@@ -1,7 +1,7 @@
 import "./selectCharacter.css"; //Se importa el archivo CSS para el estilo de la pagina de selección de personajes
 
 //Se importan las bibliotecas necesarias de react y terceros
-import React, { useState } from "react";
+import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Html } from "@react-three/drei";
 import { Container, Nav, Navbar } from "react-bootstrap";
@@ -35,7 +35,7 @@ const SelectCharacter = ({ onCharacterSelect }) => {
               {/* Logo de la empresa */}
               <img
                 alt=""
-                src="/src/assets/SVG/Recurso 9.svg"
+                 src="/images/Logo.svg"
                 width="40"
                 height="40"
                 className="d-inline-block align-top"

@@ -1,28 +1,51 @@
-// Importa los módulos necesarios
 import { Canvas } from "@react-three/fiber";
 import PlanetEarth from "../../pages/planet/models-3D/PlanetEarth";
-import { Html, OrbitControls } from "@react-three/drei";
+import { Cloud, Html, OrbitControls } from "@react-three/drei";
 import "./EarthPage.css";
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect } from "react";
 import SceneUniverse from "../sceneUniverse/SceneUniverse";
+import { PerspectiveCamera } from "@react-three/drei";
 
 const EarthPage = () => {
   const [showInfo, setShowInfo] = useState(false);
+  const [cloudColorIndex, setCloudColorIndex] = useState(0); // Índice del color actual
 
-  const handleOpenInfo = () => {
-    setShowInfo(true);
-  };
+  // Lista de colores disponibles para las nubes
+  const cloudColors = [
+    "rgba(0, 255, 255, 0.8)", // Cyan
+    "rgba(255, 69, 0, 0.8)", // Naranja
+    "rgba(173, 216, 230, 0.8)", // Azul claro
+    "rgba(124, 252, 0, 0.8)", // Verde
+    "rgba(255, 20, 147, 0.8)", // Rosa
+  ];
 
-  const handleCloseInfo = () => {
-    setShowInfo(false);
-  };
+  // Obtiene el color actual según el índice
+  const currentCloudColor = cloudColors[cloudColorIndex];
+
+  const handleOpenInfo = () => setShowInfo(true);
+  const handleCloseInfo = () => setShowInfo(false);
+
+  // Manejo del evento de teclado
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "c" || event.key === "C") {
+        // Avanza al siguiente color de forma cíclica
+        setCloudColorIndex((prevIndex) => (prevIndex + 1) % cloudColors.length);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      // Limpia el evento cuando el componente se desmonta
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [cloudColors.length]);
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      {/* Configura el Canvas */}
-      <Canvas>
+      <Canvas castShadow receiveShadow>
         <Suspense>
-          {/* Fondo y ambiente */}
           <SceneUniverse
             receiveShadow={true}
             shadowBias={0.01}
@@ -31,37 +54,47 @@ const EarthPage = () => {
             height={20}
             width={20}
             scale={0.1}
-            environmentPath="/Scene/" // Se le debe pasar un path a un cubemap
+            environmentPath="/Scene/"
             background={true}
           />
+          <ambientLight intensity={0.03} />
+          <directionalLight position={[20, 50, 5]} intensity={4} castShadow />
 
-          {/* Configura la iluminación */}
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[5, 5, 5]} intensity={1} />
+          {/* Componente Cloud con color dinámico */}
+          <Cloud
+            seed={3}
+            scale={8}
+            volume={5}
+            color={currentCloudColor} // Color dinámico basado en el índice
+            fade={100}
+            segments={40}
+            bounds={[12, 12, 12]}
+            position={[0, 0, 0]}
+            opacity={0.5}
+            growth={5}
+            speed={0.5}
+            concentrate="inside"
+          />
 
-          {/* Renderiza el modelo 3D de PlanetEarth */}
-          <PlanetEarth />
-
-          {/* Controles para la cámara */}
+          <PlanetEarth position={[0, 0, 0]} castShadow receiveShadow />
           <OrbitControls />
+          <PerspectiveCamera makeDefault position={[0, 0, 100]} fov={75} />
 
-          {/* Elementos de UI con Html */}
-          <Html position={[-5, 100, -200]} style={{ textAlign: "center" }}>
+          <Html position={[0, 0, 0]} style={{ textAlign: "center" }}>
             <h1
               style={{
                 fontSize: "14px",
                 margin: "20px 0",
-                color: "red",
+                color: "white",
+                textAlign: "center",
               }}
             >
               CAUSAS Y CONSECUENCIAS DE LA EROSION DEL SUELO
             </h1>
-
-            {/* Botón translúcido */}
             <button
               onClick={handleOpenInfo}
               style={{
-                backgroundColor: "rgba(255, 255, 255, 0.5)", // Fondo translúcido
+                backgroundColor: "rgba(255, 255, 255, 0.5)",
                 border: "1px solid #ccc",
                 borderRadius: "50%",
                 width: "50px",
@@ -76,24 +109,9 @@ const EarthPage = () => {
             >
               ?
             </button>
-
             {showInfo && (
               <div
                 style={{
-                  position: "absolute",
-                  top: "120px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  backgroundColor: "white",
-                  padding: "20px",
-                  border: "1px solid #ccc",
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-                  zIndex: 10,
-                  maxWidth: "800px", // Ajusta el ancho máximo
-                  textAlign: "center", // Centra el contenido
-                  lineHeight: "1.5", // Espaciado entre líneas
-
                   position: "absolute",
                   top: "50%",
                   left: "50%",
@@ -104,11 +122,11 @@ const EarthPage = () => {
                   borderRadius: "8px",
                   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                   zIndex: 1000,
-                  maxWidth: "600px", // Ancho máximo del tooltip
-                  minWidth: "500px", // Ancho mínimo del tooltip
-                  width: "auto", // Ancho automático del tooltip
-                  textAlign: "center", // Alineación del texto
-                  whiteSpace: "pre-wrap", // Ajuste del texto dentro del contenedor
+                  maxWidth: "600px",
+                  minWidth: "500px",
+                  width: "auto",
+                  textAlign: "center",
+                  whiteSpace: "pre-wrap",
                 }}
               >
                 <h2 style={{ fontSize: "20px", margin: "0 0 10px 0" }}>
@@ -116,7 +134,7 @@ const EarthPage = () => {
                 </h2>
                 <p style={{ fontSize: "16px", margin: "0 0 20px 0" }}>
                   Las principales causas de la erosion del suelo son: La lluvia,
-                  el flujo de agua,Levantamiento y transporte de particulas, La
+                  el flujo de agua, Levantamiento y transporte de particulas, La
                   eliminación de árboles y vegetación, Agricultura intensiva,
                   Construcción y urbanización.
                 </p>
