@@ -2,6 +2,7 @@ import "./App.css";
 import Login from "./pages/login/Login";
 import Navbar from "./components/Navbar";
 
+
 function App() {
   return (
     <div className="App">
@@ -14,13 +15,12 @@ function App() {
   );
 }
 
-// export default App;
 
-// function App() {
+function App() {
 
-//   return (
-//     <Login />
-//   )
-// }
+  return (
+    <Login />
+  )
+}
 
-// export default App
+export default App;
