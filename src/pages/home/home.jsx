@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ExampleModel from "./models/exampleModel";
 import Lights from "./Lights/Lights";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Sky } from "@react-three/drei";
 
 
 const Home = () => {
@@ -97,6 +97,7 @@ const Home = () => {
             <Canvas camera={{ fov: 49, position: [10, 10, 0.5] }}>
                 <mesh>
                     <OrbitControls />
+                    <Sky sunPosition={[100, 10, 100]} />
                     <Lights />
                     <ExampleModel />
                 </mesh>
