@@ -1,8 +1,12 @@
+import { Canvas } from "@react-three/fiber";
 import "./home.css"
 import React,{ useRef } from "react";
 import { Container, Nav, Navbar,Carousel} from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import ExampleModel from "./models/exampleModel";
+import Lights from "./Lights/Lights";
+import { OrbitControls } from "@react-three/drei";
 
 
 const Home = () => {
@@ -90,7 +94,15 @@ const Home = () => {
                         <button className="button-home" onClick={handleSoilErosionClick}>Mas información</button>
                 </div>
             </div>
+            <Canvas camera={{ fov: 49, position: [10, 10, 0.5] }}>
+                <mesh>
+                    <OrbitControls />
+                    <Lights />
+                    <ExampleModel />
+                </mesh>
+            </Canvas>
         </div>
+
 
     );
 
