@@ -14,7 +14,7 @@ const SoilErosion = () => {
               {/* Cambié a una ruta real */}
               <img
                 alt=""
-                src="/images/Logo.svg"
+                src="images/Logo.svg"
                 width="40"
                 height="40"
                 className="d-inline-block align-top"
@@ -74,6 +74,7 @@ const SoilErosion = () => {
         <img className="d-block w-100" src="" alt="" />
         <EarthPage />
       </div>
+
       <div>
         <img
           className="d-block w-100"

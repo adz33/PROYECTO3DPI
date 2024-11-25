@@ -1,8 +1,12 @@
+import { Canvas } from "@react-three/fiber";
 import "./home.css"
 import React,{ useRef } from "react";
 import { Container, Nav, Navbar,Carousel} from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import ExampleModel from "./models/exampleModel";
+import Lights from "./Lights/Lights";
+import { OrbitControls, Sky } from "@react-three/drei";
 
 
 const Home = () => {
@@ -35,7 +39,7 @@ const Home = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ms-auto">
-                                <NavLink to="/Login" className="nav-link"> {/* Usamos to en lugar de href para redireccinar, redirige a la pagina erosión del suelo */}
+                                <NavLink to="/selectCharacter" className="nav-link"> {/* Usamos to en lugar de href para redireccinar, redirige a la pagina erosión del suelo */}
                                     Experiencia Interactiva
                                 </NavLink>
                                 <NavLink to="/soilErosion" className="nav-link"> {/* Usamos to en lugar de href para redireccinar, redirige a la pagina erosión del suelo */}
@@ -59,7 +63,7 @@ const Home = () => {
                     <Carousel.Item>
                     <img
                             className="d-block w-100"
-                            src="/src/pages/home/slides/slide.jpg"
+                            src="/images/home/slides/slide.jpg"
                             />
                         <Carousel.Caption>
                         </Carousel.Caption>
@@ -67,7 +71,7 @@ const Home = () => {
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="/src/pages/home/slides/slide-1.jpg"
+                            src="/images/home/slides/slide-1.jpg"
                             />
                         <Carousel.Caption>
                         </Carousel.Caption>
@@ -90,7 +94,16 @@ const Home = () => {
                         <button className="button-home" onClick={handleSoilErosionClick}>Mas información</button>
                 </div>
             </div>
+            <Canvas camera={{ fov: 49, position: [10, 10, 0.5] }}>
+                <mesh>
+                    <OrbitControls />
+                    <Sky sunPosition={[100, 10, 100]} />
+                    <Lights />
+                    <ExampleModel />
+                </mesh>
+            </Canvas>
         </div>
+
 
     );
 

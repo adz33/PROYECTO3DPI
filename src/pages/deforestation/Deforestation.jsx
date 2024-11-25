@@ -9,7 +9,7 @@ const Deforestation = () => {
             <div className="deforestation-Navbar">
             <Navbar className="navbar" expand="lg">
             <Container>
-                <Navbar.Brand href="/home"> {/* Cambié a una ruta real */}
+                <Navbar.Brand href="/"> {/* Cambié a una ruta real */}
                     <img
                         alt="Logo"
                         src="/images/Logo.svg"
@@ -24,7 +24,7 @@ const Deforestation = () => {
                         <NavLink to="/soilErosion" className="nav-link"> {/* Usamos to en lugar de href */}
                             Erosión del Suelo
                         </NavLink>
-                        <NavLink to="/Login" className="nav-link"> {/* Redirige a la página del Quiz */}
+                        <NavLink to="/selectCharacter" className="nav-link"> {/* Redirige a la página del Quiz */}
                             Experiencia Interactiva
                         </NavLink>
                     </Nav>
