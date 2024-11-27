@@ -9,6 +9,7 @@ import MaleCharacter from "./Characters/maleCharacter.jsx";
 import Environment from './Environment/Environment.jsx';
 import InGameNavBar from './Navbar/Navbar.jsx';
 import MovementGuide from './Text/movementGuide.jsx';
+import CharacterController from './CharacterController/CharacterController.jsx';
 import './level0.css';
 
 const Level0 = () => 
@@ -53,8 +54,12 @@ const Level0 = () =>
                     <Environment />
                     <Lights />
                     <OrbitControls enableZoom={true} />
-                    {character === 'Científico' && <Cientific position={[0,0.2,0]}/>}
-                    {character === 'Ingeniero' && <MaleCharacter position={[0,0.2,0]}/>}
+                    {character === 'Científico' && (
+                        <CharacterController character={<Cientific position={[0, 0.2, 0]} />} />
+                    )}
+                    {character === 'Ingeniero' && (
+                        <CharacterController character={<MaleCharacter position={[0, 0.2, 0]} />} />
+                    )}
                     <InitialMap />
                 </Canvas>
             </div>
