@@ -44,7 +44,7 @@ const EarthPage = () => {
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      <Canvas>
+      <Canvas castShadow receiveShadow>
         <Suspense>
           <SceneUniverse
             receiveShadow={true}
@@ -107,26 +107,7 @@ const EarthPage = () => {
                 boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
               }}
             >
-              ?{/* Cuadro de texto */}
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "20px",
-                  left: "200%",
-                  transform: "translateX(-50%)",
-                  backgroundColor: "rgba(0, 0, 0, 0.7)", // Fondo oscuro translúcido
-                  color: "white", // Texto blanco para contraste
-                  padding: "10px 20px",
-                  borderRadius: "8px",
-                  fontSize: "16px",
-                  textAlign: "center",
-                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", // Sombra para contraste
-                }}
-              >
-                <p style={{ margin: 0 }}>
-                  Presiona la tecla <strong>C</strong>.
-                </p>
-              </div>
+              ?
             </button>
             {showInfo && (
               <div

@@ -2,6 +2,7 @@ import "./SoilErosion.css";
 import { Container, Nav, Navbar, Carousel } from "react-bootstrap";
 import { NavLink } from "react-router-dom"; // Importamos NavLink para la navegación interna
 import EarthPage from "../../components/ErarthPage/EarthPage";
+import HouseCan from "../../components/ErarthPage/HouseCan";
 
 const SoilErosion = () => {
   return (
@@ -14,7 +15,7 @@ const SoilErosion = () => {
               {/* Cambié a una ruta real */}
               <img
                 alt=""
-                src="images/Logo.svg"
+                src="/images/Logo.svg"
                 width="40"
                 height="40"
                 className="d-inline-block align-top"
@@ -74,7 +75,6 @@ const SoilErosion = () => {
         <img className="d-block w-100" src="" alt="" />
         <EarthPage />
       </div>
-
       <div>
         <img
           className="d-block w-100"
@@ -82,6 +82,7 @@ const SoilErosion = () => {
           alt=""
         />
       </div>
+      <HouseCan/>
     </div>
   );
 };

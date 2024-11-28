@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { RepeatWrapping } from "three";
 import RotationPlanet from "../../../components/animations/RotationPlanet"; // Importa el componente de rotación
 
+
 const PlanetEarth = (props) => {
   const { nodes, materials } = useGLTF("characters/models-3D/Planet/planetNew.glb");
   const PATH = useMemo(() => "materials/earth/mud_cracked_dry_03_", []);
@@ -21,6 +22,7 @@ const PlanetEarth = (props) => {
   });
 
   return (
+  //  <RigidBody>
     <RotationPlanet speed={0.01}> {/* Envuelve el planeta con el componente de rotación */}
       <group {...props} dispose={null}>
       <group name="Scene">
@@ -37,6 +39,9 @@ const PlanetEarth = (props) => {
       </group>
     </group>
     </RotationPlanet>
+
+  //  </RigidBody> 
+    
   );
 };
 
