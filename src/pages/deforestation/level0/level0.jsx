@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
-import {KeyboardControls, OrbitControls, Html} from '@react-three/drei';
+import {KeyboardControls, OrbitControls, Html, Text} from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import InitialMap from "./world/initialMap.jsx";
 import Lights from './Lights/Lighs.jsx';
@@ -22,28 +22,33 @@ const Level0 = () =>
         const { selectedCharacter } = location.state || {};
         const [character] = useState(selectedCharacter);
         const [showMovementGuide, setShowMovementGuide] = useState(false);
+        const [currentAction, setCurrentAction] = useState('idle');
 
         useEffect(() => {
             const handleKeyDown = (event) => {
                 if (event.key === 'h') {
                     setShowMovementGuide(true);
                 }
-                // Add logic to handle key down events for movement
-                // ...
-            };
-
-            const handleKeyUp = (event) => {
-                // Add logic to handle key up events to stop movement
-                // ...
             };
 
             window.addEventListener('keydown', handleKeyDown);
-            window.addEventListener('keyup', handleKeyUp);
             return () => {
                 window.removeEventListener('keydown', handleKeyDown);
-                window.removeEventListener('keyup', handleKeyUp);
             };
         }, [setShowMovementGuide]);
+
+        useEffect(() => {
+            const { forward, backward, left, right } = map;
+            if (forward || backward || left || right) {
+                if (currentAction !== 'walk') {
+                    setCurrentAction('walk');
+                }
+            } else {
+                if (currentAction !== 'idle') {
+                    setCurrentAction('idle');
+                }
+            }
+        }, [map, currentAction]);
 
         const handleCloseMovementGuide = () => {
             setShowMovementGuide(false);
@@ -61,8 +66,16 @@ const Level0 = () =>
                 )}
                 <KeyboardControls map={map}>
                     <Canvas camera={{position: [0, 1, 0] }}>
+                        <Text
+                            position={[0, 2, -5]}
+                            fontSize={1}
+                            color="RED"
+                            anchorX="center"
+                            anchorY="middle"
+                        >
+                            ¡Bienvenido al Nivel 0!
+                        </Text>
                         <Html position={[15, 10, 0]}>
-                                <h1>Bienvenido al Juego</h1>
                                 <p>Presiona H para ver la guía de movimientos</p>
                         </Html>
                         <Suspense fallback={null}>
@@ -79,13 +92,14 @@ const Level0 = () =>
                                 jumpVel={3} 
                                 position={[-8, 5, 7]}
                                 gravity={-9.81} // Add this line to affect the character with gravity
+                                currentAction={currentAction} // Pass currentAction to Ecctrl
                             >
-                            {character === 'Científico' && <Cientific position={[0,-0.8,0]} rotation={[0, -Math.PI / 2, 0]} />}
-                            {character === 'Ingeniero' && <MaleCharacter position={[0,-0.8,0]} rotation={[0, -Math.PI / 2, 0]} />}
+                            {character === 'Científico' && <Cientific position={[0,-0.8,0]} rotation={[0, -Math.PI / 2, 0]} action={currentAction} />}
+                            {character === 'Ingeniero' && <MaleCharacter position={[0,-0.8,0]} rotation={[0, -Math.PI / 2, 0]} action={currentAction} />}
                             </Ecctrl>
                         </Physics>
                         </Suspense>
-            d        </Canvas>
+                    </Canvas>
                 </KeyboardControls>
             </div>
         );
