@@ -2,6 +2,7 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import { useMemo } from "react";
 import { RepeatWrapping } from "three";
 import RotationPlanet from "../../../components/animations/RotationPlanet"; // Importa el componente de rotación
+import { RigidBody } from "@react-three/rapier";
 
 
 const PlanetEarth = (props) => {
@@ -22,7 +23,7 @@ const PlanetEarth = (props) => {
   });
 
   return (
-  //  <RigidBody>
+   <RigidBody type="fixed">
     <RotationPlanet speed={0.01}> {/* Envuelve el planeta con el componente de rotación */}
       <group {...props} dispose={null}>
       <group name="Scene">
@@ -40,7 +41,7 @@ const PlanetEarth = (props) => {
     </group>
     </RotationPlanet>
 
-  //  </RigidBody> 
+    </RigidBody> 
     
   );
 };

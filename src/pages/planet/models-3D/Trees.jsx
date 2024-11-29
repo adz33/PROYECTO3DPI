@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { RigidBody } from "@react-three/rapier";
 
 const Trees = ({
   groundMesh, // Objeto 3D del suelo
@@ -53,6 +54,7 @@ const Trees = ({
   });
 
   return (
+    <RigidBody type="fixed">
     <group
       ref={groupRef}
       scale={[scaleFactor, scaleFactor, scaleFactor]} // Escala del árbol
@@ -74,6 +76,7 @@ const Trees = ({
         />
       </group>
     </group>
+    </RigidBody>
   );
 };
 
