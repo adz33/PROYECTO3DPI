@@ -1,7 +1,6 @@
-
-import { Environment } from '@react-three/drei';
-// Puesta en escena para el universo
-
+import React from "react";
+import { Environment } from "@react-three/drei";
+//Puesta en escena
 const SceneForest = ({
   receiveShadow = true,
   shadowBias = 0.001,
@@ -15,13 +14,19 @@ const SceneForest = ({
   ...props
 }) => {
   if (!environmentPath) {
-    console.error('Hace falta la ruta de la scena');
+    console.error("Hace falta la ruta de la scena");
     return null;
-    
   }
 
-  const environmentFiles = ['Image_right.png', 'Image_left.png', 'Image_up.png', 'Image_down.png',  'Image_back.png', 'Image_front.png'];
-// Entorno de iluminacion
+  const environmentFiles = [
+    "Cube_right.png",
+    "Cube_left.png",
+    "Cube_up.png",
+    "Cube_down.png",
+    "Cube_back.png",
+    "Cube_front.png",
+  ];
+  //entorno de iluminacion
   return (
     <Environment
       ground={{

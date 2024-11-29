@@ -1,14 +1,15 @@
-import { useRef, useEffect } from "react";
-import { RigidBody, BallCollider, CuboidCollider } from "@react-three/rapier";
+import { useRef, useEffect, useState } from "react";
+import { RigidBody, BallCollider } from "@react-three/rapier";
 import { Vector3 } from "three";
 
-const Bird = ({ numBirds = 10, scale = 1, bounds = 10 }) => {
+const Bird = ({ numBirds = 7, scale = 3, bounds = 10 }) => {
   const birdRefs = useRef([]);
+  const [droppedItems, setDroppedItems] = useState([]); // Estado para manejar las botellas y bolsas
 
   // Genera posiciones y direcciones aleatorias para las aves
   const randomPosition = () => ({
     x: Math.random() * bounds * 2 - bounds,
-    y: Math.random() * bounds * 2 - bounds,
+    y: Math.random() * bounds * 0.8 + 1, // Aseguramos que las aves estén por encima del suelo
     z: Math.random() * bounds * 2 - bounds,
   });
 
@@ -19,21 +20,28 @@ const Bird = ({ numBirds = 10, scale = 1, bounds = 10 }) => {
   });
 
   // Lista de aves con posiciones y direcciones iniciales
-  const birds = Array.from({ length: numBirds }, () => ({
-    position: randomPosition(),
-    direction: randomDirection(),
-  }));
+  const birds = useRef(
+    Array.from({ length: numBirds }, () => ({
+      position: randomPosition(),
+      direction: randomDirection(),
+    }))
+  );
 
   // Efecto para manejar el movimiento continuo de las aves
   useEffect(() => {
     const interval = setInterval(() => {
       birdRefs.current.forEach((ref, index) => {
         if (ref) {
-          const direction = birds[index].direction;
+          const bird = birds.current[index];
+          const direction = bird.direction;
 
-          // Aplicar impulso continuo para mantener el movimiento
+          // Aplicar impulso constante para mantener el movimiento
           ref.applyImpulse(
-            new Vector3(direction.x * 0.05, direction.y * 0.05, direction.z * 0.05),
+            new Vector3(
+              direction.x * 0.05,
+              direction.y * 0.05,
+              direction.z * 0.05
+            ),
             true
           );
 
@@ -46,36 +54,64 @@ const Bird = ({ numBirds = 10, scale = 1, bounds = 10 }) => {
             Math.abs(currentPosition.y) > bounds ||
             Math.abs(currentPosition.z) > bounds
           ) {
-            birds[index].direction = {
+            bird.direction = {
               x: -direction.x,
               y: -direction.y,
               z: -direction.z,
             };
 
-            // Aplicar corrección para evitar que el ave quede fuera del área
             ref.setLinvel(
               new Vector3(-direction.x * 2, -direction.y * 2, -direction.z * 2),
               true
             );
           }
+
+          // Evitar que las aves traspasen el suelo
+          if (currentPosition.y < 0.5 * scale) {
+            bird.direction.y = Math.abs(direction.y); // Aseguramos que la dirección sea hacia arriba
+            ref.setTranslation(
+              new Vector3(currentPosition.x, 0.5 * scale, currentPosition.z),
+              true
+            );
+            ref.setLinvel(
+              new Vector3(direction.x, Math.abs(direction.y) * 2, direction.z),
+              true
+            );
+          }
         }
       });
-    }, 50); // Intervalo corto para mantener fluidez
+    }, 50);
 
     return () => clearInterval(interval);
-  }, [birds, bounds]);
+  }, [bounds, scale]);
+
+  // Manejar el evento de presionar la tecla W
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === "w" || event.key === "W") {
+        // Cuando se presiona W, eliminar la basura del pico de las aves
+        setDroppedItems([]); // Esto borra todas las botellas y bolsas del estado
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
 
   return (
     <>
-      {birds.map((bird, index) => (
+      {/* Aves */}
+      {birds.current.map((bird, index) => (
         <RigidBody
           key={index}
           ref={(el) => (birdRefs.current[index] = el)}
           colliders={false} // Desactivamos los colisionadores automáticos
           position={[bird.position.x, bird.position.y, bird.position.z]}
-          type="dynamic" // Aseguramos que los cuerpos sean dinámicos
+          type="dynamic"
+          restitution={0.9} // Aumenta el rebote en colisiones
           friction={0.2}
-          restitution={0.9}
         >
           {/* Cuerpo del ave */}
           <mesh scale={[scale, scale, scale]}>
@@ -105,16 +141,47 @@ const Bird = ({ numBirds = 10, scale = 1, bounds = 10 }) => {
             <meshStandardMaterial color="brown" />
           </mesh>
 
+          {/* Basura en el pico */}
+          {Math.random() > 0.5 && !droppedItems.includes(index) ? (
+            // Botella
+            <group position={[0, 0.9 * scale, 0]} scale={4 * scale}>
+              <mesh position={[0, 0.2, 0]}>
+                <cylinderGeometry args={[0.1, 0.1, 0.4, 32]} />
+                <meshStandardMaterial
+                  color="lightblue"
+                  transparent
+                  opacity={0.8}
+                />
+              </mesh>
+              <mesh position={[0, 0.45, 0]}>
+                <cylinderGeometry args={[0.05, 0.05, 0.1, 32]} />
+                <meshStandardMaterial
+                  color="lightblue"
+                  transparent
+                  opacity={0.8}
+                />
+              </mesh>
+              <mesh position={[0, 0.55, 0]}>
+                <cylinderGeometry args={[0.06, 0.06, 0.05, 32]} />
+                <meshStandardMaterial color="blue" />
+              </mesh>
+            </group>
+          ) : !droppedItems.includes(index) ? (
+            // Bolsa de basura
+            <group position={[0, 0.9 * scale, 0]} scale={3 * scale}>
+              <mesh position={[0, 0.15, 0]}>
+                <sphereGeometry args={[0.2, 16, 16]} />
+                <meshStandardMaterial color="gray" />
+              </mesh>
+              <mesh position={[0, 0.35, 0]}>
+                <coneGeometry args={[0.1, 0.2, 8]} />
+                <meshStandardMaterial color="black" />
+              </mesh>
+            </group>
+          ) : null}
+
           {/* Colliders manuales */}
           <BallCollider args={[0.5 * scale]} />
-          <CuboidCollider
-            args={[0.6 * scale, 0.3 * scale, 0.1 * scale]}
-            position={[0.8 * scale, 0.2 * scale, 0]}
-          />
-          <CuboidCollider
-            args={[0.6 * scale, 0.3 * scale, 0.1 * scale]}
-            position={[-0.8 * scale, 0.2 * scale, 0]}
-          />
         </RigidBody>
       ))}
     </>

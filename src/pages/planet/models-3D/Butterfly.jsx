@@ -6,10 +6,12 @@ import * as THREE from "three";
 const Butterfly = ({
   count = 16, // Número de mariposas
   spaceBounds = [50, 30, 50], // Tamaño del espacio [x, y, z]
-  animationSpeedRange = [0.05,1], // Rango de velocidad de aleteo
+  animationSpeedRange = [0.05, 1], // Rango de velocidad de aleteo
   scaleRange = [0.1, 0.1], // Rango de tamaño
 }) => {
-  const { nodes, materials } = useGLTF("characters/models-3D/Planet/butterfly.glb");
+  const { nodes, materials } = useGLTF(
+    "characters/models-3D/Planet/butterfly.glb"
+  );
 
   // Referencias para todas las mariposas
   const butterfliesRef = useRef([]);
@@ -27,7 +29,10 @@ const Butterfly = ({
       y: THREE.MathUtils.randFloat(0.8, 1.2),
       z: THREE.MathUtils.randFloat(0.5, 1.5),
     },
-    animationSpeed: THREE.MathUtils.randFloat(animationSpeedRange[0], animationSpeedRange[1]),
+    animationSpeed: THREE.MathUtils.randFloat(
+      animationSpeedRange[0],
+      animationSpeedRange[1]
+    ),
   }));
 
   useFrame((state) => {
@@ -55,7 +60,8 @@ const Butterfly = ({
         // Aleteo
         const wing = butterfly.children[0];
         if (wing) {
-          wing.rotation.z = Math.sin(time * animationSpeed * 100) * Math.PI * 0.2;
+          wing.rotation.z =
+            Math.sin(time * animationSpeed * 100) * Math.PI * 0.2;
         }
       }
     });
@@ -75,7 +81,9 @@ const Butterfly = ({
               castShadow
               receiveShadow
               geometry={nodes?.Node1?.geometry}
-              material={materials["bytt:___Default"] || new THREE.MeshStandardMaterial()}
+              material={
+                materials["bytt:___Default"] || new THREE.MeshStandardMaterial()
+              }
             />
           </group>
         </group>

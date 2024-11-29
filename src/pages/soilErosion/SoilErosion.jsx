@@ -82,7 +82,7 @@ const SoilErosion = () => {
           alt=""
         />
       </div>
-      <HouseCan/>
+      <HouseCan />
     </div>
   );
 };

@@ -2,19 +2,18 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import Trees from "../../pages/planet/models-3D/Trees";
 
-
-const TreesCan = ( props) => {
+const TreesCan = (props) => {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       {/* Configura el Canvas */}
       <Canvas shadows>
         {/* Configura la iluminación */}
-        <ambientLight intensity={0.} />
+        <ambientLight intensity={0.5} />
 
         {/* Luz direccional que proyecta sombras */}
         <directionalLight
           position={[5, 5, 5]} // Posición de la luz direccional
-          intensity={60} // Intensidad de la luz
+          intensity={90} // Intensidad de la luz
           castShadow // Habilitar sombras
           shadow-mapSize-width={1024} // Tamaño del mapa de sombras
           shadow-mapSize-height={1024}

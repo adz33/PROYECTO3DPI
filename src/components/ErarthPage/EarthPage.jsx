@@ -45,7 +45,7 @@ const EarthPage = () => {
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      <Canvas castShadow receiveShadow>
+      <Canvas shadows>
         <Suspense>
           <SceneUniverse
             receiveShadow={true}
@@ -58,7 +58,7 @@ const EarthPage = () => {
             environmentPath="/Scene/"
             background={true}
           />
-          <Physics debug>
+          <Physics>
             <ambientLight intensity={0.03} />
             <directionalLight position={[20, 50, 5]} intensity={4} castShadow />
 

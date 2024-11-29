@@ -7,7 +7,7 @@ const ButterflyCan = () => {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       {/* Configura el Canvas */}
-      <Canvas castShadow receiveShadow>
+      <Canvas>
         {/* Configura la iluminación */}
         <ambientLight intensity={0.8} />
         <directionalLight position={[5, 5, 5]}

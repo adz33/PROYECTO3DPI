@@ -54,28 +54,28 @@ const Trees = ({
   });
 
   return (
-    <RigidBody type="fixed">
-    <group
-      ref={groupRef}
-      scale={[scaleFactor, scaleFactor, scaleFactor]} // Escala del árbol
-      {...props}
-      dispose={null}
-    >
-      <group>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh0.geometry}
-          material={materials.Green}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh0_1.geometry}
-          material={materials.Wood}
-        />
+    <RigidBody type="fixed" colliders="hull">
+      <group
+        ref={groupRef}
+        scale={[scaleFactor, scaleFactor, scaleFactor]} // Escala del árbol
+        {...props}
+        dispose={null}
+      >
+        <group>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh0.geometry}
+            material={materials.Green}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh0_1.geometry}
+            material={materials.Wood}
+          />
+        </group>
       </group>
-    </group>
     </RigidBody>
   );
 };
