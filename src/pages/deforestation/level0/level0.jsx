@@ -7,7 +7,7 @@ import Environment from './Environment/Environment.jsx';
 import InGameNavBar from './Navbar/Navbar.jsx';
 import MovementGuide from './Text/movementGuide.jsx';
 import Cientific from './Characters/Cientific.jsx';
-import MaleCharacter from './Characters/MaleCharacter.jsx';
+import MaleCharacter from './Characters/maleCharacter.jsx';
 import useMovements from './utils/key-movements.js';
 import './level0.css';
 import { Physics } from '@react-three/rapier';

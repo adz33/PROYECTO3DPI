@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { useAvatar } from '../../../../context/AvatarContext';
 
-const maleCharacter = (props) => {
+const MaleCharacter = (props) => {
 
     const avatarRef = useRef();
     const {avatar, setAvatar} = useAvatar();
@@ -94,7 +94,7 @@ const maleCharacter = (props) => {
     );
 }
 
-export default maleCharacter;
+export default MaleCharacter;
 
 useGLTF.preload('characters/Avatars/maleCharacter.glb');
 
