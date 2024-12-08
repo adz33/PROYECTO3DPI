@@ -14,6 +14,7 @@ import './level0.css';
 import { Physics } from '@react-three/rapier';
 import Ecctrl from 'ecctrl';
 import MapLvL0 from './world/mapLvL0.jsx';
+import Butterfly from './Characters/Butterfly.jsx';
 
 const Level0 = () => 
     {
@@ -101,7 +102,7 @@ const Level0 = () =>
                         <Lights />
                         <Physics gravity={[0, -9.81, 0]} debug>
                             <MapLvL0 />
-                            
+                            <Butterfly castShadow receiveShadow />
                             <Ecctrl
                                 capsuleHalfHeight={0.5}
                                 floatingDis={0.2}

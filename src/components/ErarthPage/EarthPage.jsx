@@ -5,6 +5,7 @@ import "./EarthPage.css";
 import { Suspense, useState, useEffect } from "react";
 import SceneUniverse from "../sceneUniverse/SceneUniverse";
 import { PerspectiveCamera } from "@react-three/drei";
+import { Physics } from "@react-three/rapier";
 
 const EarthPage = () => {
   const [showInfo, setShowInfo] = useState(false);
@@ -44,7 +45,7 @@ const EarthPage = () => {
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      <Canvas castShadow receiveShadow>
+      <Canvas shadows>
         <Suspense>
           <SceneUniverse
             receiveShadow={true}
@@ -57,28 +58,30 @@ const EarthPage = () => {
             environmentPath="/Scene/"
             background={true}
           />
-          <ambientLight intensity={0.03} />
-          <directionalLight position={[20, 50, 5]} intensity={4} castShadow />
+          <Physics>
+            <ambientLight intensity={0.03} />
+            <directionalLight position={[20, 50, 5]} intensity={4} castShadow />
 
-          {/* Componente Cloud con color dinámico */}
-          <Cloud
-            seed={3}
-            scale={8}
-            volume={5}
-            color={currentCloudColor} // Color dinámico basado en el índice
-            fade={100}
-            segments={40}
-            bounds={[12, 12, 12]}
-            position={[0, 0, 0]}
-            opacity={0.5}
-            growth={5}
-            speed={0.5}
-            concentrate="inside"
-          />
+            {/* Componente Cloud con color dinámico */}
+            <Cloud
+              seed={3}
+              scale={8}
+              volume={5}
+              color={currentCloudColor} // Color dinámico basado en el índice
+              fade={100}
+              segments={40}
+              bounds={[12, 12, 12]}
+              position={[0, 0, 0]}
+              opacity={0.5}
+              growth={5}
+              speed={0.5}
+              concentrate="inside"
+            />
 
-          <PlanetEarth position={[0, 0, 0]} castShadow receiveShadow />
-          <OrbitControls />
-          <PerspectiveCamera makeDefault position={[0, 0, 100]} fov={75} />
+            <PlanetEarth position={[0, 0, 0]} castShadow receiveShadow />
+            <OrbitControls />
+            <PerspectiveCamera makeDefault position={[0, 0, 100]} fov={75} />
+          </Physics>
 
           <Html position={[0, 0, 0]} style={{ textAlign: "center" }}>
             <h1

@@ -2,6 +2,7 @@ import "./SoilErosion.css";
 import { Container, Nav, Navbar, Carousel } from "react-bootstrap";
 import { NavLink } from "react-router-dom"; // Importamos NavLink para la navegación interna
 import EarthPage from "../../components/ErarthPage/EarthPage";
+import HouseCan from "../../components/ErarthPage/HouseCan";
 
 const SoilErosion = () => {
   return (
@@ -81,6 +82,7 @@ const SoilErosion = () => {
           alt=""
         />
       </div>
+      <HouseCan />
     </div>
   );
 };
