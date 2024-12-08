@@ -6,7 +6,7 @@ const InitialMap = (props) => {
   const { nodes, materials } = useGLTF('/models-3d/initialMap.glb');
   return (
     <group {...props} dispose={null}>
-      <RigidBody type="fixed">
+      <RigidBody type="fixed" colliders="cuboid">
         <group name="Scene">
           <mesh
             name="Grass004"

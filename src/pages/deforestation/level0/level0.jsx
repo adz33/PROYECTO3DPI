@@ -13,7 +13,7 @@ import useMovements from './utils/key-movements.js';
 import './level0.css';
 import { Physics } from '@react-three/rapier';
 import Ecctrl from 'ecctrl';
-
+import MapLvL0 from './world/mapLvL0.jsx';
 
 const Level0 = () => 
     {
@@ -67,22 +67,41 @@ const Level0 = () =>
                 <KeyboardControls map={map}>
                     <Canvas camera={{position: [0, 1, 0] }}>
                         <Text
-                            position={[0, 2, -5]}
+                            position={[-5, 5, -10]}
                             fontSize={1}
                             color="RED"
                             anchorX="center"
                             anchorY="middle"
                         >
-                            ¡Bienvenido al Nivel 0!
+                            La deforestación afecta a nuestra biodiversidad y calidad del aire
                         </Text>
-                        <Html position={[15, 10, 0]}>
-                                <p>Presiona H para ver la guía de movimientos</p>
+                        <Text
+                            position={[0, 15, -10]}
+                            fontSize={1}
+                            color="RED"
+                            anchorX="center"
+                            anchorY="middle"
+                        >
+                            No solo sufre nuestros paisajes, tambien nuestra fauna y flora
+                        </Text>
+                        <Text
+                            position={[26, 8, -10]}
+                            fontSize={1}
+                            color="RED"
+                            anchorX="center"
+                            anchorY="middle"
+                        >
+                            Este es el proceso de la deforestación
+                            </Text>
+                        <Html position={[0, -5, 0]} style={{ position: 'fixed', bottom: '10px', left: '50%', transform: 'translateX(-50%)', zIndex: 20 }}>
+                            <p>Presiona H para ver la guía de movimientos</p>
                         </Html>
                         <Suspense fallback={null}>
                         <Environment />
                         <Lights />
-                        <Physics debug>
-                            <InitialMap />
+                        <Physics gravity={[0, -9.81, 0]} debug>
+                            <MapLvL0 />
+                            
                             <Ecctrl
                                 capsuleHalfHeight={0.5}
                                 floatingDis={0.2}
@@ -90,8 +109,8 @@ const Level0 = () =>
                                 camMaxDis={-4}
                                 maxVelLimit={5} 
                                 jumpVel={3} 
-                                position={[-8, 5, 7]}
-                                gravity={-9.81} // Add this line to affect the character with gravity
+                                position={[-8, 5, 7]} // Ajusta esta posición si es necesario
+                                gravity={-9.81} // Asegúrate de que la gravedad esté configurada
                                 currentAction={currentAction} // Pass currentAction to Ecctrl
                             >
                             {character === 'Científico' && <Cientific position={[0,-0.8,0]} rotation={[0, -Math.PI / 2, 0]} action={currentAction} />}
