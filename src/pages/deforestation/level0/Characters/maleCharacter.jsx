@@ -1,18 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useAnimations, useGLTF } from "@react-three/drei";
-import { RigidBody } from '@react-three/rapier';
+import { useAvatar } from '../../../../context/AvatarContext';
 
 const maleCharacter = (props) => {
+
+    const avatarRef = useRef();
+    const {avatar, setAvatar} = useAvatar();
     const { nodes, materials, animations } = useGLTF('/characters/Avatars/maleCharacter.glb');
-    const { actions } = useAnimations(animations);
+    const { actions } = useAnimations(animations, avatarRef);
 
     useEffect(() => {
         actions[props.animation]?.reset().fadeIn(0.5).play();
         return () => {
-            if (actions[props.animation])
-                actions[props.animation].fadeOut(0.5);
+            if (actions[avatar.animation])
+                actions[avatar.animation].fadeOut(0.5);
         }
-    }, [actions, props.animation]);
+    }, [actions, avatar.animation]);
 
     return (
         <group {...props} dispose={null}>

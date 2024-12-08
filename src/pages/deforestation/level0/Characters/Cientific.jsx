@@ -6,12 +6,14 @@ const Cientific = (props) => {
     const { actions } = useAnimations(animations);
 
     useEffect(() => {
-        actions[props.animation]?.reset().fadeIn(0.5).play();
-        return () => {
-            if (actions[props.animation])
-                actions[props.animation].fadeOut(0.5);
+        if (props.action) {
+            actions[props.action]?.reset().fadeIn(0.5).play();
+            return () => {
+                if (actions[props.action])
+                    actions[props.action].fadeOut(0.5);
+            }
         }
-    }, [actions, props.animation]);
+    }, [actions, props.action]);
 
     return (
         <group {...props} dispose={null}>

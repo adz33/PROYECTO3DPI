@@ -1,38 +1,79 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState ,useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { useAnimations } from '@react-three/drei';
+import { useAvatar } from '../../../../context/AvatarContext';
+import { OrbitControls, useKeyboardControls } from '@react-three/drei';
 
-const CharacterController = ({ characterRef, animations }) => {
-    const { actions } = useAnimations(animations, characterRef);
-    const [currentAction, setCurrentAction] = useState('idle');
+export default function CharacterController() {
+
+    const { avatar, setAvatar } = useAvatar();
+    const [sub, get] = useKeyboardControls()
+    const [runSound] = useState(new Audio("/assets/sounds/run.wav"))
+    const [play, setPlay] = useState(false)
+    const [isJumping, setIsJumping] = useState(false);
+
+
+    // Caminar
+    useEffect(() => {
+        const unsubscribe = sub(
+            (state) => state.forward || state.backward || state.leftward || state.rightward,
+            (pressed) => {
+                setAvatar((prevAvatar) => ({ ...prevAvatar, animation: pressed ? "Walk" : "Idle" }));
+                setPlay(pressed);
+            }
+        );
+        return () => unsubscribe();
+    }, [setAvatar, sub]);
 
     useEffect(() => {
-        if (actions && actions[currentAction]) {
-            actions[currentAction].reset().fadeIn(0.5).play();
-        }
-
-        return () => {
-            if (actions && actions[currentAction]) {
-                actions[currentAction].fadeOut(0.5);
+        const unsubscribe = sub(
+            (state) => (state.forward || state.backward || state.leftward || state.rightward) && state.run,
+            (pressed) => {
+                setAvatar((prevAvatar) => ({ ...prevAvatar, animation: pressed ? "Running" : "Idle" }));
+                setPlay(pressed);
             }
-        };
-    }, [currentAction, actions]);
+        );
+        return () => unsubscribe();
+    }, [setAvatar, sub]);
+
+    useEffect(() => {
+        const unsubscribe = sub(
+            (state) => state.jump && !isJumping,
+            () => {
+                setAvatar((prevAvatar) => ({ ...prevAvatar, animation: "Jump" }));
+                setIsJumping(true);
+                setTimeout(() => {
+                    setAvatar((prevAvatar) => ({ ...prevAvatar, animation: "Idle" }));
+                    setIsJumping(false);
+                }, 1000); // Duración de la animación de salto en milisegundos (1 segundo)
+            }
+        );
+        return () => unsubscribe();
+    }, [setAvatar, sub, isJumping]);
+
+    useEffect(() => {
+        if (play) {
+            runSound.currentTime = 0;
+            runSound.volume = Math.random();
+            runSound.play();
+        } else {
+            runSound.pause();
+        }
+    }, [play]);
 
     useFrame((state, delta) => {
-        const { forward, backward, left, right } = state.controls;
-
-        if (forward || backward || left || right) {
-            if (currentAction !== 'walk') {
-                setCurrentAction('walk');
-            }
+        const { forward, backward, leftward, rightward } = get()
+        if (forward || backward || leftward || rightward) {
+            setPlay(true)
+            
         } else {
-            if (currentAction !== 'idle') {
-                setCurrentAction('idle');
-            }
+            setPlay(false)
         }
-    });
 
-    return null;
-};
+        const pressed = get().back
+    })
 
-export default CharacterController;
+    return (
+
+        null
+    )
+}
