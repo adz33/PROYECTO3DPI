@@ -39,19 +39,6 @@ const Level2 = () =>
             };
         }, [setShowMovementGuide]);
 
-        useEffect(() => {
-            const { forward, backward, left, right } = map;
-            if (forward || backward || left || right) {
-                if (currentAction !== 'walk') {
-                    setCurrentAction('walk');
-                }
-            } else {
-                if (currentAction !== 'idle') {
-                    setCurrentAction('idle');
-                }
-            }
-        }, [map, currentAction]);
-
         const handleCloseMovementGuide = () => {
             setShowMovementGuide(false);
         };

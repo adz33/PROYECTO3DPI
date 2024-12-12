@@ -5,8 +5,7 @@ import { RigidBody } from '@react-three/rapier';
 const Seed = (props) => {
   const { nodes } = useGLTF('/models-3d/Seed.glb');
   return (
-    <group {...props} dispose={null}>
-      <RigidBody type="fixed" colliders="trimesh">
+    <group {...props} dispose={null} scale={[200, 200, 200]}> {/* Increase scale here */}
       <group {...props} dispose={null}>
       <group name="Scene">
         <mesh
@@ -47,7 +46,6 @@ const Seed = (props) => {
         <group name="Layer_7" />
       </group>
     </group>
-      </RigidBody>
     </group>
   );
 }
