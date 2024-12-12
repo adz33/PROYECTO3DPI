@@ -12,12 +12,12 @@ import useMovements from './utils/key-movements.js';
 import './level0.css';
 import { Physics } from '@react-three/rapier';
 import Ecctrl from 'ecctrl';
-import MapLvL0 from './world/mapLvL0.jsx';
 import Butterfly from './Characters/Butterfly.jsx';
 import CharacterController from './CharacterController/CharacterController.jsx';
 import { AvatarProvider } from '../../../context/AvatarContext.jsx';
+import MapLvL3 from './world/MapLvL3.jsx';
 
-const Level0 = () => 
+const Level3 = () => 
     {
         const map = useMovements();
         const location = useLocation();
@@ -103,8 +103,7 @@ const Level0 = () =>
                             <Environment />
                             <Lights />
                             <Physics gravity={[0, -9.81, 0]} debug>
-                                <MapLvL0 />
-                                <Butterfly castShadow receiveShadow />
+                                <MapLvL3 />
                                 <Ecctrl
                                     capsuleHalfHeight={0.5}
                                     floatingDis={0.2}
@@ -129,4 +128,4 @@ const Level0 = () =>
         );
     };
 
-export default Level0;
+export default Level3;

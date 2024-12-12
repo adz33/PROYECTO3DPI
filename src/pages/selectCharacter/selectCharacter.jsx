@@ -33,7 +33,7 @@ const handleCharacterClick = (character) =>
     }; 
 
 const handleConfirmClick = () => {
-    navigate("/level0", { state: { selectedCharacter } });
+    navigate("/level1", { state: { selectedCharacter } });
 }
 
 
