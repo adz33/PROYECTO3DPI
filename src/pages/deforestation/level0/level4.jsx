@@ -17,6 +17,7 @@ import CharacterController from './CharacterController/CharacterController.jsx';
 import { AvatarProvider } from '../../../context/AvatarContext.jsx';
 import MapLvL4 from './world/MapLvL4.jsx';
 import Views3 from './View/View3.jsx';
+import ambientSong from '../../../../public/sounds/ambientSong.wav';
 
 const Level4 = () => 
     {
@@ -52,6 +53,16 @@ const Level4 = () =>
                 }
             }
         }, [map, currentAction]);
+
+        useEffect(() => {
+            const audio = new Audio(ambientSong);
+            audio.loop = true;
+            audio.play();
+            return () => {
+                audio.pause();
+                audio.currentTime = 0;
+            };
+        }, []);
 
         const handleCloseMovementGuide = () => {
             setShowMovementGuide(false);

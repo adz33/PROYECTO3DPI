@@ -16,6 +16,7 @@ import CharacterController from './CharacterController/CharacterController.jsx';
 import { AvatarProvider } from '../../../context/AvatarContext.jsx';
 import MapLvL2 from './world/MapLvL2.jsx';
 import Views1 from './View/View1.jsx';
+import ambientSong from '../../../../public/sounds/ambientSong.wav';
 
 function Model({ path, position, onClick }) {
     const { scene } = useGLTF(path);
@@ -82,6 +83,16 @@ const Level2 = () =>
                 }
             }
         }, [map, currentAction]);
+
+        useEffect(() => {
+            const audio = new Audio(ambientSong);
+            audio.loop = true;
+            audio.play();
+            return () => {
+                audio.pause();
+                audio.currentTime = 0;
+            };
+        }, []);
     
         const handleCloseMovementGuide = () => {
             setShowMovementGuide(false);
