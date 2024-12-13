@@ -29,7 +29,7 @@ const InGameNavBar = () => {
                             </NavLink>
                         </Nav>
                         <Nav className="ms-auto">
-                            <NavLink to="/" className="nav-link"> {/* Redirige a la página de Login */}
+                            <NavLink to="Login/" className="nav-link"> {/* Redirige a la página de Login */}
                                 Home
                             </NavLink>
                         </Nav>
