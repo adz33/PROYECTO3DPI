@@ -100,12 +100,16 @@ const Level2 = () =>
                 )}
                 {showQuestion && (
                     <div className="question-overlay">
-                        <h2>Pregunta 2</h2>
-                        <p>¿Cuál de los siguientes es un impacto negativo de la deforestación?</p>
-                        <button onClick={() => handleAnswer('a')}>a) Incremento de la biodiversidad </button>
-                        <button onClick={() => handleAnswer('b')}>b) Disminución del dioxido de carbono en la atmósfera </button>
-                        <button onClick={() => handleAnswer('c')}>c) Pérdida de hábitats para especies animales y vegetales </button>
-                        <button onClick={() => handleAnswer('d')}>d) Mejora de la calidad del aire </button>
+                        <div className="container-questions">
+                            <h2 className="h2-questions">Pregunta 2</h2>
+                            <p className="p-questions">¿Cuál de los siguientes es un impacto negativo de la deforestación?</p>
+                            <div className='container-buttons-questions'>
+                                <button onClick={() => handleAnswer('a')}>a) Incremento de la biodiversidad </button>
+                                <button onClick={() => handleAnswer('b')}>b) Disminución del dioxido de carbono en la atmósfera </button>
+                                <button onClick={() => handleAnswer('c')}>c) Pérdida de hábitats para especies animales y vegetales </button>
+                                <button onClick={() => handleAnswer('d')}>d) Mejora de la calidad del aire </button>
+                            </div>
+                        </div>
                     </div>
                 )}
                     <KeyboardControls map={map}>

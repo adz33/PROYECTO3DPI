@@ -112,12 +112,16 @@ const Level1 = () => {
                 )}
                 {showQuestion && (
                     <div className="question-overlay">
-                        <h2>Pregunta</h2>
-                        <p>¿Cuál es una de las principales causas de la deforestación a nivel mundial?</p>
-                        <button onClick={() => handleAnswer('a')}>a) La pesca comercial</button>
-                        <button onClick={() => handleAnswer('b')}>b) La agricultura y ganadería extensiva</button>
-                        <button onClick={() => handleAnswer('c')}>c) La energía renovable</button>
-                        <button onClick={() => handleAnswer('d')}>d) El transporte aéreo</button>
+                        <div className="container-questions">
+                            <h2 className="h2-questions">Pregunta</h2>
+                            <p className="p-questions">¿Cuál es una de las principales causas de la deforestación a nivel mundial?</p>
+                            <div className='container-buttons-questions'>
+                                <button onClick={() => handleAnswer('a')}>a) La pesca comercial</button>
+                                <button onClick={() => handleAnswer('b')}>b) La agricultura y ganadería extensiva</button>
+                                <button onClick={() => handleAnswer('c')}>c) La energía renovable</button>
+                                <button onClick={() => handleAnswer('d')}>d) El transporte aéreo</button>
+                            </div>
+                        </div>
                     </div>
                 )}
                 <KeyboardControls map={map}>
