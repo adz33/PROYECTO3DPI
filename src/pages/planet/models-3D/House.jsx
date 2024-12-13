@@ -15,6 +15,7 @@ const House = (props) => {
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.play(); // Reproducir el sonido
+      
     }
   }, []);
 

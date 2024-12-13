@@ -42,7 +42,7 @@ const Home = () => {
   const handleSound = useCallback(() => {
     if (audioRef.current) {
       audioRef.current.play();
-      audioRef.current.setVolume(5);
+      audioRef.current.setVolume(1);
     }
   }, []);
 
