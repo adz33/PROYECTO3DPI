@@ -21,7 +21,7 @@ const Level4 = () =>
     {
         const map = useMovements();
         const location = useLocation();
-        const { selectedCharacter } = location.state || {};
+        const { selectedCharacter = 'Científico' } = location.state || {};
         const [character] = useState(selectedCharacter);
         const [showMovementGuide, setShowMovementGuide] = useState(false);
         const [currentAction, setCurrentAction] = useState('idle');
@@ -78,27 +78,6 @@ const Level4 = () =>
                             >
                                 La deforestación afecta a nuestra biodiversidad y calidad del aire
                             </Text>
-                            <Text
-                                position={[0, 15, -10]}
-                                fontSize={1}
-                                color="RED"
-                                anchorX="center"
-                                anchorY="middle"
-                            >
-                                No solo sufre nuestros paisajes, tambien nuestra fauna y flora
-                            </Text>
-                            <Text
-                                position={[26, 8, -10]}
-                                fontSize={1}
-                                color="RED"
-                                anchorX="center"
-                                anchorY="middle"
-                            >
-                                Este es el proceso de la deforestación
-                                </Text>
-                            <Html position={[0, -5, 0]} style={{ position: 'fixed', bottom: '10px', left: '50%', transform: 'translateX(-50%)', zIndex: 20 }}>
-                                <p>Presiona H para ver la guía de movimientos</p>
-                            </Html>
                             <Suspense fallback={null}>
                             <Environment />
                             <Lights />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
-import { useLocation } from 'react-router-dom';
-import {KeyboardControls, OrbitControls, Html, Text} from '@react-three/drei';
+import { useLocation, useNavigate } from 'react-router-dom';
+import {KeyboardControls, useGLTF} from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import Lights from './Lights/Lighs.jsx';
 import Environment from './Environment/Environment.jsx';
@@ -12,33 +12,64 @@ import useMovements from './utils/key-movements.js';
 import './level0.css';
 import { Physics } from '@react-three/rapier';
 import Ecctrl from 'ecctrl';
-import Butterfly from './Characters/Butterfly.jsx';
 import CharacterController from './CharacterController/CharacterController.jsx';
 import { AvatarProvider } from '../../../context/AvatarContext.jsx';
 import MapLvL3 from './world/MapLvL3.jsx';
+import Views2 from './View/View2.jsx';
 
-const Level3 = () => 
+function Model({ path, position, onClick }) {
+    const { scene } = useGLTF(path);
+    if (!scene) return null;
+    return (
+        <primitive 
+            object={scene} 
+            scale={15} 
+            position={position} 
+            onClick={onClick} 
+            onPointerOver={(e) => (e.stopPropagation(), (e.target.style.cursor = 'pointer'))}
+            onPointerOut={(e) => (e.stopPropagation(), (e.target.style.cursor = 'default'))}
+        />
+    );
+}
+
+
+const Level2 = () => 
     {
         const map = useMovements();
         const location = useLocation();
+        const navigate = useNavigate();
         const { selectedCharacter } = location.state || {};
         const [character] = useState(selectedCharacter);
         const [showMovementGuide, setShowMovementGuide] = useState(false);
         const [currentAction, setCurrentAction] = useState('idle');
-
+        const [showQuestion, setShowQuestion] = useState(false);
+    
+        const handleCollision = () => {
+            setShowQuestion(true);
+        };
+    
+        const handleAnswer = (answer) => {
+            if (answer === 'b') {
+                alert('¡Correcto! Redirigiendo al siguiente nivel...');
+                navigate('/level4', { state: { selectedCharacter: character } });
+            } else {
+                alert('Respuesta incorrecta. Inténtalo de nuevo.');
+            }
+        };
+    
         useEffect(() => {
             const handleKeyDown = (event) => {
                 if (event.key === 'h') {
                     setShowMovementGuide(true);
                 }
             };
-
+    
             window.addEventListener('keydown', handleKeyDown);
             return () => {
                 window.removeEventListener('keydown', handleKeyDown);
             };
-        }, [setShowMovementGuide]);
-
+        }, []);
+    
         useEffect(() => {
             const { forward, backward, left, right } = map;
             if (forward || backward || left || right) {
@@ -51,57 +82,38 @@ const Level3 = () =>
                 }
             }
         }, [map, currentAction]);
-
+    
         const handleCloseMovementGuide = () => {
             setShowMovementGuide(false);
         };
-
         return (
             <AvatarProvider>
-                <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative' }}>
-                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', zIndex: 10 }}>
-                        <InGameNavBar />
+            <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative' }}>
+                <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', zIndex: 10 }}>
+                    <InGameNavBar />
+                    <Views2 />
+                </div>
+                {showMovementGuide && (
+                    <div className="movementGuide-overlay">
+                        <MovementGuide onClose={handleCloseMovementGuide} />
                     </div>
-                    {showMovementGuide && (
-                        <div className="movementGuide-overlay">
-                            <MovementGuide onClose={handleCloseMovementGuide} />
-                        </div>
-                    )}
+                )}
+                {showQuestion && (
+                    <div className="question-overlay">
+                        <h2>Pregunta 3</h2>
+                        <p>¿Qué medida puede ayudar a reducir la deforestación?</p>
+                        <button onClick={() => handleAnswer('a')}>a) Incrementar el uso de plásticos no biodegradables </button>
+                        <button onClick={() => handleAnswer('b')}>b) Promover prácticas de agricultura sostenible </button>
+                        <button onClick={() => handleAnswer('c')}>c) Expandir las áreas urbanas sin planificación </button>
+                        <button onClick={() => handleAnswer('d')}>d) Aumentar la tala de árboles para combustible </button>
+                    </div>
+                )}
                     <KeyboardControls map={map}>
                         <Canvas camera={{position: [0, 1, 0] }}>
-                            <Text
-                                position={[-5, 5, -10]}
-                                fontSize={1}
-                                color="RED"
-                                anchorX="center"
-                                anchorY="middle"
-                            >
-                                La deforestación afecta a nuestra biodiversidad y calidad del aire
-                            </Text>
-                            <Text
-                                position={[0, 15, -10]}
-                                fontSize={1}
-                                color="RED"
-                                anchorX="center"
-                                anchorY="middle"
-                            >
-                                No solo sufre nuestros paisajes, tambien nuestra fauna y flora
-                            </Text>
-                            <Text
-                                position={[26, 8, -10]}
-                                fontSize={1}
-                                color="RED"
-                                anchorX="center"
-                                anchorY="middle"
-                            >
-                                Este es el proceso de la deforestación
-                                </Text>
-                            <Html position={[0, -5, 0]} style={{ position: 'fixed', bottom: '10px', left: '50%', transform: 'translateX(-50%)', zIndex: 20 }}>
-                                <p>Presiona H para ver la guía de movimientos</p>
-                            </Html>
                             <Suspense fallback={null}>
                             <Environment />
                             <Lights />
+                            <Model path="/characters/Avatars/Seed.glb" position={[30, 1, 35]} onClick={() => setShowQuestion(true)} />
                             <Physics gravity={[0, -9.81, 0]} debug>
                                 <MapLvL3 />
                                 <Ecctrl
@@ -128,4 +140,4 @@ const Level3 = () =>
         );
     };
 
-export default Level3;
+export default Level2;
