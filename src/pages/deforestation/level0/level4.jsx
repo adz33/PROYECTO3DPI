@@ -105,7 +105,7 @@ const Level4 = () =>
                             <Suspense fallback={null}>
                             <Environment />
                             <Lights />
-                            <Physics gravity={[0, -9.81, 0]} debug>
+                            <Physics gravity={[0, -9.81, 0]} >
                                 <MapLvL4 />
                                 
                                 <Butterfly castShadow receiveShadow />

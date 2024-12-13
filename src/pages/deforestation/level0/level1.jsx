@@ -160,7 +160,7 @@ const Level1 = () => {
                             >
                                 Bienvenido a nuestra experiencia interactiva
                             </Text>
-                            <Physics gravity={[0, -9.81, 0]} debug>
+                            <Physics gravity={[0, -9.81, 0]}>
                                 <MapLvL1 />
                                 <Ecctrl
                                     capsuleHalfHeight={0.5}
