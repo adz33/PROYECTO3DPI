@@ -19,6 +19,13 @@ const Views1 = () => {
         height="100"
         className="movementguide"
         />
+        <img
+        alt="GameGuide"
+        src="/images/deforestation/view/GameGuide.svg"
+        width="400"
+        height="100"
+        className="Gameguide"
+        />
     </div>
   );
 }

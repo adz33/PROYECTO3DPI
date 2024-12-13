@@ -16,7 +16,6 @@ import Video from "../../forestVideo/Video";
 import PostProcessing from "../postProcessing/PostProcessing";
 import Butterfly from "../planet/models-3D/Butterfly";
 
-
 const Home = () => {
   const navigate = useNavigate();
   const audioRef = useRef(null);

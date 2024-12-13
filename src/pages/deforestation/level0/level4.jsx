@@ -16,6 +16,8 @@ import Butterfly from './Characters/Butterfly.jsx';
 import CharacterController from './CharacterController/CharacterController.jsx';
 import { AvatarProvider } from '../../../context/AvatarContext.jsx';
 import MapLvL4 from './world/MapLvL4.jsx';
+import Views3 from './View/View3.jsx';
+import ambientSong from '../../../../public/sounds/ambientSong.wav';
 
 const Level4 = () => 
     {
@@ -52,6 +54,16 @@ const Level4 = () =>
             }
         }, [map, currentAction]);
 
+        useEffect(() => {
+            const audio = new Audio(ambientSong);
+            audio.loop = true;
+            audio.play();
+            return () => {
+                audio.pause();
+                audio.currentTime = 0;
+            };
+        }, []);
+
         const handleCloseMovementGuide = () => {
             setShowMovementGuide(false);
         };
@@ -61,6 +73,7 @@ const Level4 = () =>
                 <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative' }}>
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', zIndex: 10 }}>
                         <InGameNavBar />
+                        <Views3 />
                     </div>
                     {showMovementGuide && (
                         <div className="movementGuide-overlay">
@@ -69,20 +82,32 @@ const Level4 = () =>
                     )}
                     <KeyboardControls map={map}>
                         <Canvas camera={{position: [0, 1, 0] }}>
-                            <Text
-                                position={[-5, 5, -10]}
+                        <Text
+                                position={[20, 15, 10]}
                                 fontSize={1}
                                 color="RED"
                                 anchorX="center"
                                 anchorY="middle"
+                                rotation={[0, Math.PI / -2, 0]} // Rotate the text
                             >
-                                La deforestación afecta a nuestra biodiversidad y calidad del aire
+                                Felicitaciones, has completado el Juego!!
+                            </Text>
+                            <Text
+                                position={[20, 10, 10]}
+                                fontSize={1}
+                                color="RED"
+                                anchorX="center"
+                                anchorY="middle"
+                                rotation={[0, Math.PI / -2, 0]} // Rotate the text
+                            >
+                                Asi se veria nuestro mundo si ayudamos al cuidado del medio ambiente
                             </Text>
                             <Suspense fallback={null}>
                             <Environment />
                             <Lights />
                             <Physics gravity={[0, -9.81, 0]} debug>
                                 <MapLvL4 />
+                                
                                 <Butterfly castShadow receiveShadow />
                                 <Ecctrl
                                     capsuleHalfHeight={0.5}

@@ -16,6 +16,7 @@ import CharacterController from './CharacterController/CharacterController.jsx';
 import { AvatarProvider } from '../../../context/AvatarContext.jsx';
 import MapLvL2 from './world/MapLvL2.jsx';
 import Views1 from './View/View1.jsx';
+import ambientSong from '../../../../public/sounds/ambientSong.wav';
 
 function Model({ path, position, onClick }) {
     const { scene } = useGLTF(path);
@@ -82,6 +83,16 @@ const Level2 = () =>
                 }
             }
         }, [map, currentAction]);
+
+        useEffect(() => {
+            const audio = new Audio(ambientSong);
+            audio.loop = true;
+            audio.play();
+            return () => {
+                audio.pause();
+                audio.currentTime = 0;
+            };
+        }, []);
     
         const handleCloseMovementGuide = () => {
             setShowMovementGuide(false);
@@ -100,12 +111,16 @@ const Level2 = () =>
                 )}
                 {showQuestion && (
                     <div className="question-overlay">
-                        <h2>Pregunta 2</h2>
-                        <p>¿Cuál de los siguientes es un impacto negativo de la deforestación?</p>
-                        <button onClick={() => handleAnswer('a')}>a) Incremento de la biodiversidad </button>
-                        <button onClick={() => handleAnswer('b')}>b) Disminución del dioxido de carbono en la atmósfera </button>
-                        <button onClick={() => handleAnswer('c')}>c) Pérdida de hábitats para especies animales y vegetales </button>
-                        <button onClick={() => handleAnswer('d')}>d) Mejora de la calidad del aire </button>
+                        <div className="container-questions">
+                            <h2 className="h2-questions">Pregunta 2</h2>
+                            <p className="p-questions">¿Cuál de los siguientes es un impacto negativo de la deforestación?</p>
+                            <div className='container-buttons-questions'>
+                                <button onClick={() => handleAnswer('a')}>a) Incremento de la biodiversidad </button>
+                                <button onClick={() => handleAnswer('b')}>b) Disminución del dioxido de carbono en la atmósfera </button>
+                                <button onClick={() => handleAnswer('c')}>c) Pérdida de hábitats para especies animales y vegetales </button>
+                                <button onClick={() => handleAnswer('d')}>d) Mejora de la calidad del aire </button>
+                            </div>
+                        </div>
                     </div>
                 )}
                     <KeyboardControls map={map}>
@@ -113,7 +128,7 @@ const Level2 = () =>
                             <Suspense fallback={null}>
                             <Environment />
                             <Lights />
-                            <Model path="/characters/Avatars/Seed.glb" position={[30, 1, 35]} onClick={() => setShowQuestion(true)} />
+                            <Model path="/characters/Avatars/Seed.glb" position={[-29, 1, 36]} onClick={() => setShowQuestion(true)} />
                             <Physics gravity={[0, -9.81, 0]} debug>
                                 <MapLvL2 />
                                 <Ecctrl

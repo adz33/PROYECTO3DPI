@@ -16,6 +16,7 @@ import CharacterController from './CharacterController/CharacterController.jsx';
 import { AvatarProvider } from '../../../context/AvatarContext.jsx';
 import MapLvL3 from './world/MapLvL3.jsx';
 import Views2 from './View/View2.jsx';
+import ambientSong from '../../../../public/sounds/ambientSong.wav';
 
 function Model({ path, position, onClick }) {
     const { scene } = useGLTF(path);
@@ -82,6 +83,16 @@ const Level2 = () =>
                 }
             }
         }, [map, currentAction]);
+
+        useEffect(() => {
+            const audio = new Audio(ambientSong);
+            audio.loop = true;
+            audio.play();
+            return () => {
+                audio.pause();
+                audio.currentTime = 0;
+            };
+        }, []);
     
         const handleCloseMovementGuide = () => {
             setShowMovementGuide(false);
@@ -100,12 +111,16 @@ const Level2 = () =>
                 )}
                 {showQuestion && (
                     <div className="question-overlay">
-                        <h2>Pregunta 3</h2>
-                        <p>¿Qué medida puede ayudar a reducir la deforestación?</p>
-                        <button onClick={() => handleAnswer('a')}>a) Incrementar el uso de plásticos no biodegradables </button>
-                        <button onClick={() => handleAnswer('b')}>b) Promover prácticas de agricultura sostenible </button>
-                        <button onClick={() => handleAnswer('c')}>c) Expandir las áreas urbanas sin planificación </button>
-                        <button onClick={() => handleAnswer('d')}>d) Aumentar la tala de árboles para combustible </button>
+                        <div className="container-questions">
+                            <h2 className="h2-questions">Pregunta 3</h2>
+                            <p className="p-questions">¿Qué medida puede ayudar a reducir la deforestación?</p>
+                            <div className='container-buttons-questions'>
+                                <button onClick={() => handleAnswer('a')}>a) Incrementar el uso de plásticos no biodegradables </button>
+                                <button onClick={() => handleAnswer('b')}>b) Promover prácticas de agricultura sostenible </button>
+                                <button onClick={() => handleAnswer('c')}>c) Expandir las áreas urbanas sin planificación </button>
+                                <button onClick={() => handleAnswer('d')}>d) Aumentar la tala de árboles para combustible </button>
+                            </div>
+                        </div>
                     </div>
                 )}
                     <KeyboardControls map={map}>
@@ -113,7 +128,8 @@ const Level2 = () =>
                             <Suspense fallback={null}>
                             <Environment />
                             <Lights />
-                            <Model path="/characters/Avatars/Seed.glb" position={[30, 1, 35]} onClick={() => setShowQuestion(true)} />
+                            <Model path="/characters/Avatars/Seed.glb" position={[10, 1, 22.2]} onClick={() => setShowQuestion(true)} />
+                            
                             <Physics gravity={[0, -9.81, 0]} debug>
                                 <MapLvL3 />
                                 <Ecctrl
