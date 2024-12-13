@@ -7,6 +7,7 @@ import { Suspense, useState } from "react";
 import { Physics } from "@react-three/rapier";
 import Bird from "../../pages/physics/Bird";
 import SceneForest from "../SceneForest/SceneForest";
+import Video from "../../forestVideo/Video";
 
 const HouseCan = () => {
   const [showInfo, setShowInfo] = useState(false);

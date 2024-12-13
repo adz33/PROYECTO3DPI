@@ -10,7 +10,7 @@ const SoilErosion = () => {
       <div className="deforestation-Navbar">
         <Navbar className="navbar" expand="lg">
           <Container>
-            <Navbar.Brand href="/home">
+            <Navbar.Brand href="/">
               {" "}
               {/* Cambié a una ruta real */}
               <img
@@ -29,10 +29,10 @@ const SoilErosion = () => {
                   {/* Usamos to en lugar de href */}
                   Deforestación
                 </NavLink>
-                <NavLink to="/Quiz" className="nav-link">
+                <NavLink to="/selectCharacter" className="nav-link">
                   {" "}
                   {/* Redirige a la página del Quiz */}
-                  Volver al Juego
+                  Experiencia Interactiva
                 </NavLink>
               </Nav>
               <Nav className="ms-auto">

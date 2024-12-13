@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
-import {KeyboardControls, OrbitControls, Html, Text} from '@react-three/drei';
+import {KeyboardControls, Html, Text} from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import Lights from './Lights/Lighs.jsx';
 import Environment from './Environment/Environment.jsx';
@@ -11,7 +11,7 @@ import MaleCharacter from './Characters/maleCharacter.jsx';
 import useMovements from './utils/key-movements.js';
 import './level0.css';
 import { Physics } from '@react-three/rapier';
-import Ecctrl from 'ecctrl';
+// import Ecctrl from 'ecctrl';
 import MapLvL0 from './world/mapLvL0.jsx';
 import Butterfly from './Characters/Butterfly.jsx';
 import CharacterController from './CharacterController/CharacterController.jsx';

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import ExampleModel from "./models/exampleModel";
 import Lights from "./Lights/Lights";
 import { OrbitControls, Sky } from "@react-three/drei";
+import Video from "../../forestVideo/Video";
 
 
 const Home = () => {
@@ -100,6 +101,7 @@ const Home = () => {
                     <Sky sunPosition={[100, 10, 100]} />
                     <Lights />
                     <ExampleModel />
+                    <Video name="nature" position-y={10} scale={10}/>
                 </mesh>
             </Canvas>
         </div>
