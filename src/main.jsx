@@ -8,7 +8,10 @@ import Home from "./pages/home/home.jsx";
 import Deforestation from "./pages/deforestation/Deforestation.jsx";
 import SoilErosion from "./pages/soilErosion/SoilErosion.jsx";
 import SelectCharacter from "./pages/selectCharacter/selectCharacter.jsx";
-import Level0 from "./pages/deforestation/level0/level0.jsx";
+import Level1 from "./pages/deforestation/level0/level1.jsx";
+import Level2 from "./pages/deforestation/level0/level2.jsx";
+import Level3 from "./pages/deforestation/level0/level3.jsx";
+import Level4 from "./pages/deforestation/level0/level4.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,9 +35,22 @@ const router = createBrowserRouter([
     element: <SelectCharacter/>
   },
   {
-    path: "/level0",
-    element: <Level0/>
-  }
+    path: "/level1",
+    element: <Level1/>
+  },
+  {
+    path: "/level2",
+    element: <Level2/>
+  },
+  {
+    path: "/level3",
+    element: <Level3/>
+  },
+  {
+    path: "/level4",
+    element: <Level4/>
+  },
+
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>

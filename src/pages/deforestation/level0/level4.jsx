@@ -12,16 +12,18 @@ import useMovements from './utils/key-movements.js';
 import './level0.css';
 import { Physics } from '@react-three/rapier';
 import Ecctrl from 'ecctrl';
-import MapLvL0 from './world/mapLvL0.jsx';
 import Butterfly from './Characters/Butterfly.jsx';
 import CharacterController from './CharacterController/CharacterController.jsx';
 import { AvatarProvider } from '../../../context/AvatarContext.jsx';
+import MapLvL4 from './world/MapLvL4.jsx';
+import Views3 from './View/View3.jsx';
+import ambientSong from '../../../../public/sounds/ambientSong.wav';
 
-const Level0 = () => 
+const Level4 = () => 
     {
         const map = useMovements();
         const location = useLocation();
-        const { selectedCharacter } = location.state || {};
+        const { selectedCharacter = 'Científico' } = location.state || {};
         const [character] = useState(selectedCharacter);
         const [showMovementGuide, setShowMovementGuide] = useState(false);
         const [currentAction, setCurrentAction] = useState('idle');
@@ -52,6 +54,16 @@ const Level0 = () =>
             }
         }, [map, currentAction]);
 
+        useEffect(() => {
+            const audio = new Audio(ambientSong);
+            audio.loop = true;
+            audio.play();
+            return () => {
+                audio.pause();
+                audio.currentTime = 0;
+            };
+        }, []);
+
         const handleCloseMovementGuide = () => {
             setShowMovementGuide(false);
         };
@@ -61,6 +73,7 @@ const Level0 = () =>
                 <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative' }}>
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', zIndex: 10 }}>
                         <InGameNavBar />
+                        <Views3 />
                     </div>
                     {showMovementGuide && (
                         <div className="movementGuide-overlay">
@@ -69,41 +82,32 @@ const Level0 = () =>
                     )}
                     <KeyboardControls map={map}>
                         <Canvas camera={{position: [0, 1, 0] }}>
-                            <Text
-                                position={[-5, 5, -10]}
+                        <Text
+                                position={[20, 15, 10]}
                                 fontSize={1}
                                 color="RED"
                                 anchorX="center"
                                 anchorY="middle"
+                                rotation={[0, Math.PI / -2, 0]} // Rotate the text
                             >
-                                La deforestación afecta a nuestra biodiversidad y calidad del aire
+                                Felicitaciones, has completado el Juego!!
                             </Text>
                             <Text
-                                position={[0, 15, -10]}
+                                position={[20, 10, 10]}
                                 fontSize={1}
                                 color="RED"
                                 anchorX="center"
                                 anchorY="middle"
+                                rotation={[0, Math.PI / -2, 0]} // Rotate the text
                             >
-                                No solo sufre nuestros paisajes, tambien nuestra fauna y flora
+                                Asi se veria nuestro mundo si ayudamos al cuidado del medio ambiente
                             </Text>
-                            <Text
-                                position={[26, 8, -10]}
-                                fontSize={1}
-                                color="RED"
-                                anchorX="center"
-                                anchorY="middle"
-                            >
-                                Este es el proceso de la deforestación
-                                </Text>
-                            <Html position={[0, -5, 0]} style={{ position: 'fixed', bottom: '10px', left: '50%', transform: 'translateX(-50%)', zIndex: 20 }}>
-                                <p>Presiona H para ver la guía de movimientos</p>
-                            </Html>
                             <Suspense fallback={null}>
                             <Environment />
                             <Lights />
                             <Physics gravity={[0, -9.81, 0]} debug>
-                                <MapLvL0 />
+                                <MapLvL4 />
+                                
                                 <Butterfly castShadow receiveShadow />
                                 <Ecctrl
                                     capsuleHalfHeight={0.5}
@@ -129,4 +133,4 @@ const Level0 = () =>
         );
     };
 
-export default Level0;
+export default Level4;
