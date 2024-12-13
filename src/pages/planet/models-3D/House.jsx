@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, PositionalAudio } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -9,6 +9,14 @@ const House = (props) => {
   );
   const groupRef = useRef(); // Referencia al grupo que contiene el modelo
   const cameraRef = useRef();
+  const audioRef = useRef();
+
+  // Reproducir el sonido automáticamente al cargar el componente
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.play(); // Reproducir el sonido
+    }
+  }, []);
 
   useFrame(({ camera }) => {
     if (groupRef.current && !cameraRef.current) {
@@ -31,7 +39,16 @@ const House = (props) => {
   });
 
   return (
-    <group ref={groupRef} {...props} dispose={null}>
+    <group {...props} dispose={null} ref={groupRef}>
+      {/* Sonido Posicional */}
+      <PositionalAudio
+        ref={audioRef}
+        url="sounds/forest-sounds.mp3" // Ruta al archivo de sonido
+        distance={5} // Distancia desde la que se empieza a oír el sonido
+        loop // Reproducir el sonido en bucle
+        autoplay // Reproducir automáticamente
+      />
+
       <mesh
         castShadow
         receiveShadow
