@@ -6,6 +6,7 @@ import Lights from './Lights/Lighs.jsx';
 import Environment from './Environment/Environment.jsx';
 import InGameNavBar from './Navbar/Navbar.jsx';
 import MovementGuide from './Text/movementGuide.jsx';
+import GameGuide from './Text/GameGuide.jsx';
 import Cientific from './Characters/Cientific.jsx';
 import MaleCharacter from './Characters/maleCharacter.jsx';
 import useMovements from './utils/key-movements.js';
@@ -39,6 +40,7 @@ const Level1 = () => {
     const { selectedCharacter } = location.state || {};
     const [character] = useState(selectedCharacter);
     const [showMovementGuide, setShowMovementGuide] = useState(false);
+    const [showGameGuide, setShowGameGuide] = useState(false);
     const [currentAction, setCurrentAction] = useState('idle');
     const [showQuestion, setShowQuestion] = useState(false);
 
@@ -59,6 +61,8 @@ const Level1 = () => {
         const handleKeyDown = (event) => {
             if (event.key === 'h') {
                 setShowMovementGuide(true);
+            } else if (event.key === 'i') {
+                setShowGameGuide(true);
             }
         };
 
@@ -85,6 +89,10 @@ const Level1 = () => {
         setShowMovementGuide(false);
     };
 
+    const handleCloseGameGuide = () => {
+        setShowGameGuide(false);
+    };
+
     return (
         <AvatarProvider>
             <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative' }}>
@@ -95,6 +103,11 @@ const Level1 = () => {
                 {showMovementGuide && (
                     <div className="movementGuide-overlay">
                         <MovementGuide onClose={handleCloseMovementGuide} />
+                    </div>
+                )}
+                {showGameGuide && (
+                    <div className="movementGuide-overlay">
+                        <GameGuide onClose={handleCloseGameGuide} />
                     </div>
                 )}
                 {showQuestion && (

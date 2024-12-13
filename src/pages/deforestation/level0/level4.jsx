@@ -16,6 +16,7 @@ import Butterfly from './Characters/Butterfly.jsx';
 import CharacterController from './CharacterController/CharacterController.jsx';
 import { AvatarProvider } from '../../../context/AvatarContext.jsx';
 import MapLvL4 from './world/MapLvL4.jsx';
+import Views3 from './View/View3.jsx';
 
 const Level4 = () => 
     {
@@ -61,6 +62,7 @@ const Level4 = () =>
                 <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative' }}>
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', zIndex: 10 }}>
                         <InGameNavBar />
+                        <Views3 />
                     </div>
                     {showMovementGuide && (
                         <div className="movementGuide-overlay">
@@ -83,6 +85,7 @@ const Level4 = () =>
                             <Lights />
                             <Physics gravity={[0, -9.81, 0]} debug>
                                 <MapLvL4 />
+                                
                                 <Butterfly castShadow receiveShadow />
                                 <Ecctrl
                                     capsuleHalfHeight={0.5}

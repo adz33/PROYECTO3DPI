@@ -1,19 +1,19 @@
 import "./View.css";
 
-const Views = () => {
+const Views3 = () => {
 
 
   return (
     <div>
         <img
-        alt="SeedsAmount"
-        src="/images/deforestation/view/Seeds0.svg"
+        alt="Logo"
+        src="/images/deforestation/view/Seeds3.svg"
         width="150"
         height="100"
         className="seedsAmount"
         />
         <img
-        alt="MovementGuide"
+        alt="Logo"
         src="/images/deforestation/view/MovementGuide.svg"
         width="400"
         height="100"
@@ -30,4 +30,4 @@ const Views = () => {
   );
 }
 
-export default Views;
+export default Views3;
