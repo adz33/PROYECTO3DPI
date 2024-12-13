@@ -82,14 +82,25 @@ const Level4 = () =>
                     )}
                     <KeyboardControls map={map}>
                         <Canvas camera={{position: [0, 1, 0] }}>
-                            <Text
-                                position={[-5, 5, -10]}
+                        <Text
+                                position={[20, 15, 10]}
                                 fontSize={1}
                                 color="RED"
                                 anchorX="center"
                                 anchorY="middle"
+                                rotation={[0, Math.PI / -2, 0]} // Rotate the text
                             >
-                                La deforestación afecta a nuestra biodiversidad y calidad del aire
+                                Felicitaciones, has completado el Juego!!
+                            </Text>
+                            <Text
+                                position={[20, 10, 10]}
+                                fontSize={1}
+                                color="RED"
+                                anchorX="center"
+                                anchorY="middle"
+                                rotation={[0, Math.PI / -2, 0]} // Rotate the text
+                            >
+                                Asi se veria nuestro mundo si ayudamos al cuidado del medio ambiente
                             </Text>
                             <Suspense fallback={null}>
                             <Environment />

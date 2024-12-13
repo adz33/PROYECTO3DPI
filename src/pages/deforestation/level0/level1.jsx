@@ -141,6 +141,25 @@ const Level1 = () => {
                             <Environment />
                             <Lights />
                             <Model path="/characters/Avatars/Seed.glb" position={[30, 1, 35]} onClick={() => setShowQuestion(true)} />
+                            <Text
+                                position={[-5, 10, -10]}
+                                fontSize={1}
+                                color="RED"
+                                anchorX="center"
+                                anchorY="middle"
+                            >
+                                La deforestación afecta a nuestra biodiversidad y calidad del aire
+                            </Text>
+                            <Text
+                                position={[20, 10, 10]}
+                                fontSize={1}
+                                color="RED"
+                                anchorX="center"
+                                anchorY="middle"
+                                rotation={[0, Math.PI / -2, 0]} // Rotate the text
+                            >
+                                Bienvenido a nuestra experiencia interactiva
+                            </Text>
                             <Physics gravity={[0, -9.81, 0]} debug>
                                 <MapLvL1 />
                                 <Ecctrl

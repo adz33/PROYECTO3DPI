@@ -129,6 +129,7 @@ const Level2 = () =>
                             <Environment />
                             <Lights />
                             <Model path="/characters/Avatars/Seed.glb" position={[10, 1, 22.2]} onClick={() => setShowQuestion(true)} />
+                            
                             <Physics gravity={[0, -9.81, 0]} debug>
                                 <MapLvL3 />
                                 <Ecctrl
