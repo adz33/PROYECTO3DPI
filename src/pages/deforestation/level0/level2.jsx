@@ -128,7 +128,7 @@ const Level2 = () =>
                             <Suspense fallback={null}>
                             <Environment />
                             <Lights />
-                            <Model path="/characters/Avatars/Seed.glb" position={[30, 1, 35]} onClick={() => setShowQuestion(true)} />
+                            <Model path="/characters/Avatars/Seed.glb" position={[-29, 1, 36]} onClick={() => setShowQuestion(true)} />
                             <Physics gravity={[0, -9.81, 0]} debug>
                                 <MapLvL2 />
                                 <Ecctrl
