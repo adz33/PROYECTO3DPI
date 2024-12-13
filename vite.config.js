@@ -8,5 +8,8 @@ export default defineConfig({
     alias: {
       'three': path.resolve(__dirname, 'node_modules/three')
     }
+  },
+  server: {
+    port: 3000
   }
 })
