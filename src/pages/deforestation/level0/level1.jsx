@@ -15,7 +15,7 @@ import { Physics } from '@react-three/rapier';
 import Ecctrl from 'ecctrl';
 import CharacterController from './CharacterController/CharacterController.jsx';
 import { AvatarProvider } from '../../../context/AvatarContext.jsx';
-import MapLvL1 from './world/Maplvl1.jsx';
+import MapLvL1 from './world/MapLvL1.jsx';
 import Views from './View/View.jsx';
 import ambientSong from '../../../../public/sounds/ambientSong.wav';
 
