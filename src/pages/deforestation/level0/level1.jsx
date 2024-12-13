@@ -1,29 +1,23 @@
-import React, { useState, useEffect, Suspense } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import {
-  KeyboardControls,
-  OrbitControls,
-  Html,
-  Text,
-  useGLTF,
-} from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import Lights from "./Lights/Lighs.jsx";
-import Environment from "./Environment/Environment.jsx";
-import InGameNavBar from "./Navbar/Navbar.jsx";
-import MovementGuide from "./Text/movementGuide.jsx";
-import GameGuide from "./Text/GameGuide.jsx";
-import Cientific from "./Characters/Cientific.jsx";
-import MaleCharacter from "./Characters/maleCharacter.jsx";
-import useMovements from "./utils/key-movements.js";
-import "./level0.css";
-import { Physics } from "@react-three/rapier";
-import Ecctrl from "ecctrl";
-import CharacterController from "./CharacterController/CharacterController.jsx";
-import { AvatarProvider } from "../../../context/AvatarContext.jsx";
-import MapLvL1 from "./world/Maplvl1.jsx";
-import Views from "./View/View.jsx";
-import ambientSong from "../../../../public/sounds/ambientSong.wav";
+import React, { useState, useEffect, Suspense } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import {KeyboardControls, OrbitControls, Html, Text,useGLTF} from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
+import Lights from './Lights/Lighs.jsx';
+import Environment from './Environment/Environment.jsx';
+import InGameNavBar from './Navbar/Navbar.jsx';
+import MovementGuide from './Text/movementGuide.jsx';
+import GameGuide from './Text/GameGuide.jsx';
+import Cientific from './Characters/Cientific.jsx';
+import MaleCharacter from './Characters/maleCharacter.jsx';
+import useMovements from './utils/key-movements.js';
+import './level0.css';
+import { Physics } from '@react-three/rapier';
+import Ecctrl from 'ecctrl';
+import CharacterController from './CharacterController/CharacterController.jsx';
+import { AvatarProvider } from '../../../context/AvatarContext.jsx';
+import MapLvL1 from './world/MapLvL1.jsx';
+import Views from './View/View.jsx';
+import ambientSong from '../../../../public/sounds/ambientSong.wav';
 
 function Model({ path, position, onClick }) {
   const { scene } = useGLTF(path);
